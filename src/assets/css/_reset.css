@@ -5,10 +5,12 @@
     --color-orange: #FFB143;
     --color-red: #FF4343;
     --aside-menu-width: 320px;
+    --indent-default: 15px;
 }
 * {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
 }
 a, a:hover {
     text-decoration: none;
