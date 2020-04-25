@@ -1,5 +1,5 @@
 import Vue from 'vue'
-import routes from './routes.vue'
+import routes from './routes'
 import '../src/assets/css/_reset.css'
 
 Vue.config.productionTip = false;
