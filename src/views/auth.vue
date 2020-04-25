@@ -73,7 +73,7 @@
         border-radius: 5px;
         font-weight: 700;
         transition: .2s;
-        background: var(--color-orange);
+        background-color: var(--color-orange);
         color: var(--color-dark);
     }
     .submit:hover {
