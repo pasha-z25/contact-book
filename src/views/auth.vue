@@ -68,11 +68,16 @@
     .submit {
         display: inline-block;
         text-align: center;
+        cursor: pointer;
         padding: 10px 15px;
         border-radius: 5px;
         font-weight: 700;
+        transition: .2s;
         background: var(--color-orange);
         color: var(--color-dark);
+    }
+    .submit:hover {
+        box-shadow: 0 0 15px 0 var(--color-orange);
     }
     .wrapper, .input, .text {
         color: var(--color-lighgray);
