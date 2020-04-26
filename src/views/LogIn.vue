@@ -1,7 +1,7 @@
 <template>
   <authorization>
     <h1 class="title"><span class="big">Авторизируйтесь</span> <br>для управления контактами.</h1>
-    <form action="" class="form">
+    <form action="" class="form d-flex flex-column align-items-center justify-content-center">
       <input type="text" class="input" placeholder="E-mail">
       <input type="password" class="input" placeholder="Password">
       <button type="submit" class="submit">Войти</button>
@@ -12,7 +12,7 @@
 
 <script>
   import Authorization from "../layouts/Authorization";
-  import VLink from "./VLink";
+  import VLink from "../components/VLink";
 
   export default {
     name: "LogIn",
@@ -26,19 +26,6 @@
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
   .form {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-    -ms-flex-direction: column;
-    flex-direction: column;
-    -webkit-box-align: center;
-    -ms-flex-align: center;
-    align-items: center;
-    -webkit-box-pack: center;
-    -ms-flex-pack: center;
-    justify-content: center;
     max-width: 250px;
     margin-left: auto;
     margin-right: auto;

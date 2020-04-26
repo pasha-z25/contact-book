@@ -1,10 +1,9 @@
 <template>
   <authorization>
     <h1 class="title">Введите данные для регистрации.</h1>
-    <form action="" class="form">
-      <input type="text" class="input" placeholder="Name" required>
-      <input type="text" class="input" placeholder="Surname" required>
+    <form action="" class="form d-flex flex-wrap justify-content-center">
       <input type="text" class="input" placeholder="E-mail" required>
+      <input type="text" class="input" placeholder="Name" required>
       <input type="password" class="input" placeholder="Password" required>
       <input type="password" class="input" placeholder="Repeat Password" required>
       <button type="submit" class="submit">Регистрация</button>
@@ -15,7 +14,7 @@
 
 <script>
   import Authorization from "../layouts/Authorization";
-  import VLink from "./VLink";
+  import VLink from "../components/VLink";
 
   export default {
     name: "Register",
@@ -29,20 +28,7 @@
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
   .form {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-    -ms-flex-direction: column;
-    flex-direction: column;
-    -webkit-box-align: center;
-    -ms-flex-align: center;
-    align-items: center;
-    -webkit-box-pack: center;
-    -ms-flex-pack: center;
-    justify-content: center;
-    max-width: 250px;
+    max-width: 500px;
     margin-left: auto;
     margin-right: auto;
     margin-bottom: var(--indent-default);
@@ -55,19 +41,19 @@
   .text {
     margin-bottom: calc(var(--indent-default) * 2);
   }
-  .title .big {
-    font-size: 26px;
-  }
   .input, .submit {
-    width: 100%;
+    /*width: 100%;*/
     font-size: 16px;
   }
   .input {
+    width: 48%;
     border: none;
     border-bottom: 1px solid var(--color-lighgray);
     background-color: transparent;
     margin-bottom: var(--indent-default);
     padding: 5px;
+    margin-left: auto;
+    margin-right: auto;
   }
   .submit {
     display: inline-block;

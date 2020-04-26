@@ -1,7 +1,8 @@
 import Vue from 'vue'
 
-import LogIn from "./components/LogIn";
-import Register from "./components/Register";
+import LogIn from "./views/LogIn";
+import Register from "./views/Register";
+import Error from "./views/Error";
 
 import '../src/assets/css/_reset.css'
 
@@ -15,7 +16,7 @@ const routes = {
 new Vue({
   data: {
     currentRoute: window.location.pathname
-  },
+    },
   computed: {
     ViewComponent () {
       return routes[this.currentRoute] || Error
