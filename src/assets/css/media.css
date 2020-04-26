@@ -1,0 +1,20 @@
+@media screen and (max-width: 767px) {
+    .burger {
+        display: block;
+    }
+    .aside {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 0;
+        min-height: 100vh;
+        overflow: hidden;
+        z-index: 2;
+    }
+    .aside.open {
+        width: var(--aside-menu-width);
+    }
+    .header {
+        padding: var(--indent-default) calc(var(--indent-default) * 4);
+    }
+}

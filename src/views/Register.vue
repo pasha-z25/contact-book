@@ -35,10 +35,10 @@
     margin-bottom: calc(var(--indent-default) * 2);
   }
   .input, .submit {
+    width: 220px;
     font-size: 16px;
   }
   .input {
-    width: 48%;
     border: none;
     border-bottom: 1px solid var(--color-lighgray);
     background-color: transparent;

@@ -35,7 +35,7 @@
     margin-bottom: calc(var(--indent-default) * 2);
   }
   .input, .submit {
-    width: 100%;
+    width: 220px;
     font-size: 16px;
   }
   .input {

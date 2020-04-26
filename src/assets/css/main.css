@@ -1,6 +1,58 @@
+body {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: normal;
+    font-style: normal;
+    font-size: 14px;
+    color: var(--color-dark);
+}
 .aside {
     width: var(--aside-menu-width);
 }
 .main {
     flex: 1;
+}
+.burger {
+    display: none;
+    width: 30px;
+    height: 30px;
+    position: fixed;
+    top: var(--indent-default);
+    left: var(--indent-default);
+    z-index: 5;
+}
+.burger .line {
+    display: block;
+    position: absolute;
+    left: 4px;
+    width: 24px;
+    height: 2px;
+    background-color: var(--color-dark);
+    transition: .2s;
+    opacity: 1;
+}
+.burger.open .line {
+    background-color: var(--color-lighgray);
+}
+.burger .line:first-child {
+    top: 6px;
+}
+.burger .line:nth-child(2), .burger .line:nth-child(3) {
+    top: 14px;
+}
+.burger .line:last-child {
+    top: 22px;
+}
+.burger.open .line:first-child {
+    top: -2px;
+    opacity: 0;
+}
+.burger.open .line:nth-child(2) {
+    transform: rotate(45deg);
+}
+.burger.open .line:nth-child(3){
+    transform: rotate(-45deg);
+}
+.burger.open .line:last-child {
+    top: 32px;
+    opacity: 0;
 }

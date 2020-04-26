@@ -51,6 +51,7 @@ img {
 }
 .title {
     font-size: 24px;
+    line-height: 30px;
 }
 .title .big {
     font-size: 1.2em;
@@ -73,11 +74,4 @@ img {
 }
 .bold {
     font-weight: 700;
-}
-body {
-    font-family: 'Montserrat', sans-serif;
-    font-weight: normal;
-    font-style: normal;
-    font-size: 14px;
-    color: var(--color-dark);
 }

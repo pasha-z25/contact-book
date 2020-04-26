@@ -5,13 +5,17 @@
 </template>
 
 <script>
+
     export default {
-        name: "VHeader"
+        name: "VHeader",
     }
 </script>
 
 <style scoped>
     .header {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
         background-color: var(--color-orange);
         padding: var(--indent-default) calc(var(--indent-default) * 2);
     }
