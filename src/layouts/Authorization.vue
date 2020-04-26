@@ -1,24 +1,18 @@
 <template>
     <div class="wrapper">
         <img src="../assets/logo.png" alt="logo" width="128px" height="128px" class="logo">
-        <Auth />
+        <slot></slot>
     </div>
 </template>
 
 <script>
-    import Auth from "../views/Auth";
-    import Register from "../views/Register";
+    // import Auth from "../views/Auth";
+    // import Register from "../views/Register";
+//    import VLink from '../components/VLink.vue'
 
     export default {
         name: 'Authorization',
-        components: {
-            Auth,
-            // Register
-        },
-        views: {
-            Auth,
-            Register
-        }
+        components: {},
     }
 </script>
 
