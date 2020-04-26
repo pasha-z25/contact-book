@@ -2,9 +2,9 @@
   <authorization>
     <h1 class="title text-center"><span class="big">Авторизируйтесь</span> <br>для управления контактами.</h1>
     <form action="" class="form d-flex flex-column align-items-center justify-content-center position-center">
-      <input type="email" class="input" placeholder="E-mail">
-      <input type="password" class="input" placeholder="Password">
-      <button type="submit" class="submit">Войти</button>
+      <input type="email" class="input" placeholder="E-mail" v-model="email">
+      <input type="password" class="input" placeholder="Password" v-model="password">
+      <button type="submit" class="submit" @click="handleClick">Войти</button>
     </form>
     <p class="text text-center">Нет аккаунта? Без паники! <v-link href="/register" class="link">Регистрируемся.</v-link></p>
   </authorization>
@@ -20,6 +20,30 @@
       VLink,
       Authorization
     },
+    data() {
+      return {
+        email: '',
+        password: ''
+      }
+    },
+    methods: {
+      handleClick(e) {
+        e.preventDefault();
+        const promise = fetch('https://phonebook.hillel.it/api/users/login', {
+          method: 'POST',
+          headers: {
+            'Content-type': 'application/json',
+
+          },
+          body: JSON.stringify({
+            'email': this.email,
+            'password': this.password
+          })
+        });
+        console.log('auth ', this.email, this.password)
+        promise.then(response => response.json()).then(console.log);
+      }
+    }
   }
 </script>
 

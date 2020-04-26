@@ -2,11 +2,12 @@
   <authorization>
     <h1 class="title text-center"><span class="big">Заполните</span> <br>данные для регистрации.</h1>
     <form action="" class="form d-flex flex-wrap justify-content-center position-center">
-      <input type="email" class="input" placeholder="E-mail" required>
-      <input type="text" class="input" placeholder="Name" required>
-      <input type="password" class="input" min="4" placeholder="Password" required>
-      <input type="password" class="input" min="4" placeholder="Repeat Password" required>
-      <button type="submit" class="submit">Регистрация</button>
+      <input type="email" class="input email" placeholder="E-mail" required v-model="email">
+      <input type="text" class="input" placeholder="Name" required v-model="name">
+      <input type="text" class="input" placeholder="Surname" required v-model="surname">
+      <input type="password" class="input" placeholder="Password" required v-model="password">
+      <input type="password" class="input" placeholder="Repeat Password" required v-model="repassword">
+      <button type="submit" class="submit" @click="handleClick">Регистрация</button>
     </form>
     <p class="text text-center">Есть аккаунт? <v-link href="/" class="link">Авторизируйтесь.</v-link></p>
   </authorization>
@@ -15,12 +16,55 @@
 <script>
   import Authorization from "../layouts/Authorization";
   import VLink from "../components/VLink";
+  import routes from "../routes";
 
   export default {
     name: "Register",
     components: {
       VLink,
       Authorization
+    },
+    data() {
+      return {
+        email: '',
+        name: '',
+        surname: '',
+        password: '',
+        repassword: '',
+      }
+    },
+    methods: {
+      handleClick(e) {
+        e.preventDefault();
+        (this.password === this.repassword)
+        ? (
+          fetch('https://phonebook.hillel.it/api/users/register', {
+            method: 'POST',
+            headers: {
+              'Content-type': 'application/json',
+            },
+            body: JSON.stringify({
+              'email': this.email,
+              'password': this.password,
+              'name': this.name,
+              'surname': this.surname
+            })
+          }).then(response => response.json()).then(data => {
+            console.log(data.message);
+            setTimeout(() => {
+              this.$root.currentRoute = this.href
+              window.history.pushState(
+                      null,
+                      routes['/'],
+                      '/'
+              )
+            }, 3000)
+          })
+        )
+        : alert('Пароли не совпадают');
+        console.log('auth ', this.email, this.password)
+
+      }
     },
   }
 </script>
@@ -47,6 +91,10 @@
     margin-left: auto;
     margin-right: auto;
     color: inherit;
+  }
+  .input.email {
+    width: 100%;
+    max-width: 470px;
   }
   .submit {
     display: inline-block;
