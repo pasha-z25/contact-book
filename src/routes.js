@@ -1,5 +1,5 @@
 export default {
-    '/': 'Auth',
+    '/': 'LogIn',
     '/register': 'Register',
-    '/app': 'app'
+    '/app': 'App',
 }

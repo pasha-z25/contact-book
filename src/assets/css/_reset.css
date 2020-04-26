@@ -1,3 +1,4 @@
+@import url('../fonts/font.css');
 :root {
     --color-lighgray: #EFEBE4;
     --color-gray: #344652;
@@ -48,6 +49,15 @@ img {
     -ms-flex-pack: center;
     justify-content: center;
 }
+.title {
+    font-size: 24px;
+}
+.title .big {
+    font-size: 1.2em;
+}
+.title .small {
+    font-size: 0.8em;
+}
 .w-100 {
     width: 100%;
 }
@@ -60,4 +70,14 @@ img {
 .position-center {
     margin-left: auto;
     margin-right: auto;
+}
+.bold {
+    font-weight: 700;
+}
+body {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: normal;
+    font-style: normal;
+    font-size: 14px;
+    color: var(--color-dark);
 }

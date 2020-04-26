@@ -30,12 +30,9 @@
         margin-bottom: calc(var(--indent-default) * 3);
     }
     .title {
-        font-size: 22px;
-        color: var(--color-lighgray);
         margin-bottom: var(--indent-default);
     }
     .title .small {
-        font-size: 18px;
         opacity: 0.8;
     }
     .link {

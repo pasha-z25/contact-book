@@ -1,0 +1,6 @@
+.aside {
+    width: var(--aside-menu-width);
+}
+.main {
+    flex: 1;
+}

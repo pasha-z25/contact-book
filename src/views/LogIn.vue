@@ -1,12 +1,12 @@
 <template>
   <authorization>
-    <h1 class="title"><span class="big">Авторизируйтесь</span> <br>для управления контактами.</h1>
-    <form action="" class="form d-flex flex-column align-items-center justify-content-center">
-      <input type="text" class="input" placeholder="E-mail">
+    <h1 class="title text-center"><span class="big">Авторизируйтесь</span> <br>для управления контактами.</h1>
+    <form action="" class="form d-flex flex-column align-items-center justify-content-center position-center">
+      <input type="email" class="input" placeholder="E-mail">
       <input type="password" class="input" placeholder="Password">
       <button type="submit" class="submit">Войти</button>
     </form>
-    <p class="text">Нет аккаунта? Без паники! <v-link href="/register" class="link">Регистрируемся.</v-link></p>
+    <p class="text text-center">Нет аккаунта? Без паники! <v-link href="/register" class="link">Регистрируемся.</v-link></p>
   </authorization>
 </template>
 
@@ -23,24 +23,16 @@
   }
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
   .form {
     max-width: 250px;
-    margin-left: auto;
-    margin-right: auto;
     margin-bottom: var(--indent-default);
   }
   .title {
-    font-size: 22px;
-    text-align: center;
     margin-bottom: calc(var(--indent-default) * 2);
   }
   .text {
     margin-bottom: calc(var(--indent-default) * 2);
-  }
-  .title .big {
-    font-size: 26px;
   }
   .input, .submit {
     width: 100%;
@@ -52,6 +44,7 @@
     background-color: transparent;
     margin-bottom: var(--indent-default);
     padding: 5px;
+    color: inherit;
   }
   .submit {
     display: inline-block;
@@ -67,13 +60,7 @@
   .submit:hover {
     box-shadow: 0 0 15px 0 var(--color-orange);
   }
-  .input, .text {
-    color: var(--color-lighgray);
-  }
   .link {
     color: var(--color-orange);
-  }
-  .text {
-    text-align: center;
   }
 </style>
