@@ -1,4 +1,6 @@
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 1199px) {}
+@media screen and (max-width: 991px) {}
+@media screen and (max-width: 768px) {
     .burger {
         display: block;
     }
@@ -16,5 +18,11 @@
     }
     .header {
         padding: var(--indent-default) calc(var(--indent-default) * 4);
+    }
+}
+@media screen and (max-width: 575px) {}
+@media screen and (max-width: 425px) {
+    .aside.open {
+        width: 100%;
     }
 }

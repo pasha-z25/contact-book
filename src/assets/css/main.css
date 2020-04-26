@@ -56,3 +56,32 @@ body {
     top: 32px;
     opacity: 0;
 }
+.dropdown {
+    position: relative;
+}
+.dropdown .link {
+    cursor: pointer;
+}
+.dropdown-menu {
+    display: none;
+    list-style: none;
+    position: absolute;
+    top: 20px;
+    right: 0;
+    padding: calc(var(--indent-default) / 2);
+    background-color: var(--color-lighgray);
+}
+.dropdown-menu.open {
+    display: block;
+}
+.dropdown-item {
+    width: 100%;
+    border-bottom: 1px solid var(--color-gray);
+    padding: calc(var(--indent-default) / 2);
+}
+.dropdown-item:last-child {
+    border: none;
+}
+.dropdown-link {
+    color: var(--color-orange);
+}

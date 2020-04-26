@@ -6,9 +6,7 @@
             <span class="line"></span>
             <span class="line"></span>
         </div>
-        <v-aside :class="{ open: isOpen }">
-            <p>logo</p>
-        </v-aside>
+        <v-aside :class="{ open: isOpen }" />
         <main class="main">
             <v-header>
                 <h1 class="title">All contacts</h1>

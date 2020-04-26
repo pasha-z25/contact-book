@@ -4,8 +4,8 @@
     <form action="" class="form d-flex flex-wrap justify-content-center position-center">
       <input type="email" class="input" placeholder="E-mail" required>
       <input type="text" class="input" placeholder="Name" required>
-      <input type="password" class="input" placeholder="Password" required>
-      <input type="password" class="input" placeholder="Repeat Password" required>
+      <input type="password" class="input" min="4" placeholder="Password" required>
+      <input type="password" class="input" min="4" placeholder="Repeat Password" required>
       <button type="submit" class="submit">Регистрация</button>
     </form>
     <p class="text text-center">Есть аккаунт? <v-link href="/" class="link">Авторизируйтесь.</v-link></p>
