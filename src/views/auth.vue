@@ -1,6 +1,5 @@
 <template>
-    <div class="wrapper">
-        <img src="../assets/logo.png" alt="logo" width="128px" height="128px" class="logo">
+    <div class="auth-form-wrapper">
         <h1 class="title"><span class="big">Авторизируйтесь</span> <br>для управления контактами.</h1>
         <form action="" class="form">
             <input type="text" class="input" placeholder="E-mail">
@@ -13,12 +12,12 @@
 
 <script>
     export default {
-        name: "auth"
+        name: "auth",
     }
 </script>
 
 <style scoped>
-    .wrapper, .form {
+    .form {
         display: -webkit-box;
         display: -ms-flexbox;
         display: flex;
@@ -32,23 +31,17 @@
         -webkit-box-pack: center;
         -ms-flex-pack: center;
         justify-content: center;
-    }
-    .form {
-        width: 250px;
+        max-width: 250px;
+        margin-left: auto;
+        margin-right: auto;
         margin-bottom: var(--indent-default);
-    }
-    .wrapper {
-        flex: 1;
-        background: -webkit-gradient(linear, left top, left bottom, from(var(--color-dark)), to(var(--color-gray)));
-        background: -o-linear-gradient(top, var(--color-dark) 0%, var(--color-gray) 100%);
-        background: linear-gradient(180deg, var(--color-dark) 0%, var(--color-gray) 100%);
-    }
-    .logo {
-        margin-bottom: calc(var(--indent-default) * 3);
     }
     .title {
         font-size: 22px;
         text-align: center;
+        margin-bottom: calc(var(--indent-default) * 2);
+    }
+    .text {
         margin-bottom: calc(var(--indent-default) * 2);
     }
     .title .big {
@@ -79,10 +72,13 @@
     .submit:hover {
         box-shadow: 0 0 15px 0 var(--color-orange);
     }
-    .wrapper, .input, .text {
+    .input, .text {
         color: var(--color-lighgray);
     }
     .link {
         color: var(--color-orange);
+    }
+    .text {
+        text-align: center;
     }
 </style>
