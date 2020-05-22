@@ -41,7 +41,11 @@
           })
         });
         console.log('auth ', this.email, this.password)
-        promise.then(response => response.json()).then(console.log);
+        promise.then(response => response.json())
+                .catch(console.log)
+                .then(
+
+                );
       }
     }
   }
