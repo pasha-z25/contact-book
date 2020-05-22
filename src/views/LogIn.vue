@@ -13,6 +13,9 @@
 <script>
   import Authorization from "../layouts/Authorization";
   import VLink from "../components/VLink";
+  import routes from "../routes";
+
+  const preloader = document.querySelector('.preloader');
 
   export default {
     name: "LogIn",
@@ -29,6 +32,7 @@
     methods: {
       handleClick(e) {
         e.preventDefault();
+        preloader.classList.add('loading');
         const promise = fetch('https://phonebook.hillel.it/api/users/login', {
           method: 'POST',
           headers: {
@@ -40,12 +44,21 @@
             'password': this.password
           })
         });
-        console.log('auth ', this.email, this.password)
+        console.log('auth ', this.email, this.password);
         promise.then(response => response.json())
                 .catch(console.log)
-                .then(
-
-                );
+                .then(data => {
+                  console.log(data.message);
+                  setTimeout(() => {
+                    this.$root.currentRoute = '/';
+                    window.history.pushState(
+                            null,
+                            routes['/app'],
+                            '/app'
+                    )
+                    preloader.classList.remove('loading');
+                  }, 1000)
+                });
       }
     }
   }

@@ -18,6 +18,8 @@
   import VLink from "../components/VLink";
   import routes from "../routes";
 
+  const preloader = document.querySelector('.preloader');
+
   export default {
     name: "Register",
     components: {
@@ -38,6 +40,7 @@
         e.preventDefault();
         (this.password === this.repassword)
         ? (
+          preloader.classList.add('loading'),
           fetch('https://phonebook.hillel.it/api/users/register', {
             method: 'POST',
             headers: {
@@ -49,18 +52,21 @@
               'name': this.name,
               'surname': this.surname
             })
-          }).then(response => response.json()).then(data => {
-            console.log(data.message);
-            setTimeout(() => {
-              this.$root.currentRoute = this.href
-              window.history.pushState(
-                      null,
-                      routes['/'],
-                      '/'
-              )
-            }, 3000)
-          })
-        )
+          }).then(response => response.json())
+                  .catch(console.log)
+                  .then(data => {
+                    console.log(data.message);
+                    setTimeout(() => {
+                      this.$root.currentRoute = '/';
+                      window.history.pushState(
+                              null,
+                              routes['/'],
+                              '/'
+                      )
+                      preloader.classList.remove('loading');
+                    }, 2000)
+                  })
+          )
         : alert('Пароли не совпадают');
         console.log('auth ', this.email, this.password)
 

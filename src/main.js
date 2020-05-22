@@ -1,10 +1,11 @@
 import Vue from 'vue'
+// import VueRouter from "vue-router";
+import Error from "./views/Error";
+// import routes from "./routes";
 
 import LogIn from "./views/LogIn";
 import Register from "./views/Register";
-import Error from "./views/Error";
 import App from "./views/App";
-
 const routes = {
   '/': LogIn,
   '/register': Register,
@@ -16,6 +17,7 @@ import './assets/css/main.css'
 import './assets/css/media.css'
 
 Vue.config.productionTip = false;
+// const router = new VueRouter({ routes });
 
 new Vue({
   data: {
