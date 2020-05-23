@@ -33,6 +33,7 @@
       handleClick(e) {
         e.preventDefault();
         preloader.classList.add('loading');
+        let currentCookie;
         const promise = fetch('https://phonebook.hillel.it/api/users/login', {
           method: 'POST',
           headers: {
@@ -44,13 +45,27 @@
             'password': this.password
           })
         });
-        console.log('auth ', this.email, this.password);
+        // console.log('auth ', this.email, this.password);
         promise.then(response => response.json())
                 .catch(console.log)
                 .then(data => {
-                  console.log(data.message);
+                  currentCookie = data.cookie;
+                  // console.log(data.message);
+                  // console.log(currentCookie.name);
+                  // console.log(currentCookie.value);
+                  document.cookie = `${currentCookie.name}=${currentCookie.value}`;
+                  fetch('https://phonebook.hillel.it/api/phonebook', {
+                    method: 'GET',
+                    headers: {
+                      'Content-type': 'application/json',
+                    },
+                  }).then(response => response.json())
+                  .catch(console.log)
+                  .then(data => {
+                    console.log(data);
+                  });
                   setTimeout(() => {
-                    this.$root.currentRoute = '/';
+                    this.$root.currentRoute = '/app';
                     window.history.pushState(
                             null,
                             routes['/app'],
