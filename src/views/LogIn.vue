@@ -50,12 +50,15 @@
                 .catch(console.log)
                 .then(data => {
                   currentCookie = data.cookie;
-                  // console.log(data.message);
+                  // console.log(document.cookie);
                   // console.log(currentCookie.name);
                   // console.log(currentCookie.value);
                   document.cookie = `${currentCookie.name}=${currentCookie.value}`;
                   fetch('https://phonebook.hillel.it/api/phonebook', {
                     method: 'GET',
+                    mode: 'cors',
+                    credentials: 'include',
+                    withCredentials: true,
                     headers: {
                       'Content-type': 'application/json',
                     },
