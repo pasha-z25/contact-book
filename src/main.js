@@ -6,10 +6,12 @@ import Error from "./views/Error";
 import LogIn from "./views/LogIn";
 import Register from "./views/Register";
 import App from "./views/App";
+import Add from "./views/Add";
 const routes = {
   '/': LogIn,
   '/register': Register,
   '/app': App,
+  '/add': Add,
 };
 
 import './assets/css/_reset.css'

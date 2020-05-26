@@ -20,12 +20,12 @@
     import VAside from "../layouts/VAside";
 
     export default {
-        name: "App",
+        name: "Add",
         components: { VHeader, VAside },
         data() {
             return {
                 isOpen: false,
-                title: "All contacts"
+                title: "Add contact"
             }
         }
     }

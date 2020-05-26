@@ -1,5 +1,5 @@
 <template>
-    <div class="v-logo">
+    <div class="logo">
         <img src="" alt="" class="logo-image">
     </div>
 </template>
@@ -11,7 +11,7 @@
 </script>
 
 <style scoped>
-    .v-logo {
+    .logo {
         display: inline-block;
         width: 46px;
         height: 46px;

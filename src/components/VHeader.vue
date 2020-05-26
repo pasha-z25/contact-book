@@ -1,6 +1,8 @@
 <template>
     <header class="header">
-        <slot></slot>
+        <h1 class="title">
+            <slot></slot>
+        </h1>
     </header>
 </template>
 
