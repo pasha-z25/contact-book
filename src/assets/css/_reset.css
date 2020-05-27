@@ -5,6 +5,7 @@
     --color-dark: #101F2A;
     --color-orange: #FFB143;
     --color-red: #FF4343;
+    --color-gray-transparent: rgba(52, 70, 82, 0.5);
     --aside-menu-width: 320px;
     --indent-default: 15px;
 }
