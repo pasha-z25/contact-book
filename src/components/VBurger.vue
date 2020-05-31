@@ -13,7 +13,6 @@
         data() {
             return {
                 isOpen: false,
-                title: "Add contact"
             }
         }
     }
