@@ -54,7 +54,7 @@
                   // console.log(currentCookie.name);
                   // console.log(currentCookie.value);
                   document.cookie = `${currentCookie.name}=${currentCookie.value}`;
-                  fetch('https://phonebook.hillel.it/api/phonebook', {
+                  fetch('https://phonebook.hillel.it/api/categories', {
                     method: 'GET',
                     mode: 'cors',
                     credentials: 'include',
@@ -63,7 +63,10 @@
                       'Content-type': 'application/json',
                     },
                   }).then(response => response.json())
-                  .catch(console.log)
+                  .catch(
+                          console.log,
+                          preloader.classList.remove('loading')
+                          )
                   .then(data => {
                     console.log(data);
                   });
@@ -73,7 +76,7 @@
                             null,
                             routes['/app'],
                             '/app'
-                    )
+                    );
                     preloader.classList.remove('loading');
                   }, 1000)
                 });

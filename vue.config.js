@@ -6,9 +6,10 @@ module.exports = {
                 ws: true,
                 secure: false,
                 proxyRoot: true,
-                changeOrigin: true
+                changeOrigin: true,
+                pathRewrite: { "/": "/app" }
             },
-            '^/app': {
+            '/app': {
                 target: 'https://phonebook.hillel.it',
                 ws: true,
                 secure: false,
@@ -18,6 +19,7 @@ module.exports = {
         }
     }
 };
+
 /*
 module.exports = {
     devServer: {

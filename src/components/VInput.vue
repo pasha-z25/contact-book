@@ -8,6 +8,7 @@
                    :class="[vclass ? vclass : '', 'input']"
                    :name="[name ? name : 'name']"
                    :placeholder="[placeholder ? placeholder : '']"
+                   :required="required"
             />
         </label>
     </div>
@@ -16,7 +17,7 @@
 <script>
     export default {
         name: "VInput",
-        props: ['id', 'label', 'type', 'name', 'vclass', 'placeholder'],
+        props: ['id', 'label', 'type', 'name', 'vclass', 'required', 'placeholder'],
         data () {
             return {
                 inputValue: '',

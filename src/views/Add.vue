@@ -8,7 +8,7 @@
             </v-header>
             <section class="content">
                 <div class="input-block">
-                    <v-input id="first-name" class="light" vclass="line" label="Имя" name="Имя" placeholder="Name"/>
+                    <v-input id="first-name" class="light" vclass="line" label="Имя" name="Имя" placeholder="Name" required/>
                 </div>
                 <div class="input-block">
                     <v-input id="last-name" class="light" vclass="line" label="Фамилия" name="Фамилия" placeholder="Surname"/>
@@ -23,7 +23,7 @@
                     <v-input id="birthday" type="date" class="light" vclass="line" label="Дата рождения" name="Дата рождения" placeholder="Birthday"/>
                 </div>
                 <div class="text-center">
-                    <v-button name="Добавить"/>
+                    <v-button name="Добавить" @click="addContact"/>
                 </div>
             </section>
         </main>
@@ -44,6 +44,11 @@
             return {
                 isOpen: false,
                 title: "Add contact"
+            }
+        },
+        methods: {
+            addContact () {
+                fetch()
             }
         }
     }
