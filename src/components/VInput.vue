@@ -1,7 +1,7 @@
 <template>
     <div class="input-group">
         <label class="label">
-            <span class="text">{{ label }}</span>
+            <span :class="{ text : label }">{{ label }}</span>
             <input v-model="inputValue"
                    :id="[id ? id : '']"
                    :type="[type ? type : 'text']"
@@ -16,18 +16,10 @@
 <script>
     export default {
         name: "VInput",
-        props: {
-            id: String,
-            label: String,
-            type: String,
-            name: String,
-            vclass: String,
-            placeholder: String
-        },
+        props: ['id', 'label', 'type', 'name', 'vclass', 'placeholder'],
         data () {
             return {
                 inputValue: '',
-                inClass: true
             }
         },
     }

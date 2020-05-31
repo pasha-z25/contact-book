@@ -1,11 +1,6 @@
 <template>
     <div id="app">
-        <div class="burger" :class="{ open: isOpen }" @click="isOpen = !isOpen">
-            <span class="line"></span>
-            <span class="line"></span>
-            <span class="line"></span>
-            <span class="line"></span>
-        </div>
+        <v-burger />
         <v-aside :class="{ open: isOpen }" />
         <main class="main">
             <v-header>
@@ -27,7 +22,9 @@
                 <div class="input-block">
                     <v-input id="birthday" type="date" class="light" vclass="line" label="Дата рождения" name="Дата рождения" placeholder="Birthday"/>
                 </div>
-
+                <div class="text-center">
+                    <v-button name="Добавить"/>
+                </div>
             </section>
         </main>
     </div>
@@ -37,10 +34,12 @@
     import VHeader from "../components/VHeader";
     import VAside from "../layouts/VAside";
     import VInput from "../components/VInput";
+    import VBurger from "../components/VBurger";
+    import VButton from "../components/VButton";
 
     export default {
         name: "Add",
-        components: {VInput, VHeader, VAside },
+        components: {VButton, VBurger, VInput, VHeader, VAside },
         data() {
             return {
                 isOpen: false,

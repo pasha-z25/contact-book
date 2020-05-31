@@ -1,11 +1,6 @@
 <template>
     <div id="app">
-        <div class="burger" :class="{ open: isOpen }" @click="isOpen = !isOpen">
-            <span class="line"></span>
-            <span class="line"></span>
-            <span class="line"></span>
-            <span class="line"></span>
-        </div>
+        <v-burger />
         <v-aside :class="{ open: isOpen }" />
         <main class="main">
             <v-header>
@@ -18,10 +13,11 @@
 <script>
     import VHeader from "../components/VHeader";
     import VAside from "../layouts/VAside";
+    import VBurger from "../components/VBurger";
 
     export default {
         name: "App",
-        components: { VHeader, VAside },
+        components: {VBurger, VHeader, VAside },
         data() {
             return {
                 isOpen: false,
