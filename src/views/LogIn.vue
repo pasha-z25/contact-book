@@ -34,7 +34,7 @@
         e.preventDefault();
         preloader.classList.add('loading');
         let currentCookie;
-        const promise = fetch('https://phonebook.hillel.it/api/users/login', {
+        const promise = fetch('/api/users/login', {
           method: 'POST',
           headers: {
             'Content-type': 'application/json',
@@ -54,7 +54,7 @@
                   // console.log(currentCookie.name);
                   // console.log(currentCookie.value);
                   document.cookie = `${currentCookie.name}=${currentCookie.value}`;
-                  fetch('https://phonebook.hillel.it/api/categories', {
+                  fetch('/api/phonebook', {
                     method: 'GET',
                     mode: 'cors',
                     credentials: 'include',

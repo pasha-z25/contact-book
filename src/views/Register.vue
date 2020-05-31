@@ -41,7 +41,7 @@
         (this.password === this.repassword)
         ? (
           preloader.classList.add('loading'),
-          fetch('https://phonebook.hillel.it/api/users/register', {
+          fetch('/api/users/register', {
             method: 'POST',
             headers: {
               'Content-type': 'application/json',
