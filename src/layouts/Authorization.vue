@@ -1,14 +1,16 @@
 <template>
     <div class="wrapper d-flex flex-column align-items-center justify-content-center">
+        <set-lang />
         <img src="../assets/images/logo.png" alt="logo" width="128px" height="128px" class="logo">
         <slot></slot>
     </div>
 </template>
 
 <script>
+    import SetLang from "../components/SetLang";
     export default {
         name: 'Authorization',
-        components: {},
+        components: {SetLang},
     }
 </script>
 
