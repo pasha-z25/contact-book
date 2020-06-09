@@ -3,11 +3,11 @@
         <label class="label">
             <span :class="{ text : label }">{{ label }}</span>
             <input v-model="inputValue"
-                   :id="[id ? id : '']"
-                   :type="[type ? type : 'text']"
+                   :id="id"
+                   :type="type"
                    :class="[vclass ? vclass : '', 'input']"
-                   :name="[name ? name : 'name']"
-                   :placeholder="[placeholder ? placeholder : '']"
+                   :name="name"
+                   :placeholder="placeholder"
                    :required="required"
             />
         </label>
@@ -17,7 +17,31 @@
 <script>
     export default {
         name: "VInput",
-        props: ['id', 'label', 'type', 'name', 'vclass', 'required', 'placeholder'],
+        props: {
+            id: {
+                type: [String, Number],
+                required: true
+            },
+            label: {
+                type: String
+            },
+            type: {
+                type: String,
+                default: 'text'
+            },
+            name: {
+                type: String,
+            },
+            vclass: {
+                type: String,
+            },
+            required: {
+                type: String,
+            },
+            placeholder: {
+                type: String,
+            }
+        },
         data () {
             return {
                 inputValue: '',
