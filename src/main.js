@@ -1,34 +1,17 @@
-import Vue from 'vue'
-// import VueRouter from "vue-router";
-import Error from "./views/Error";
-// import routes from "./routes";
-
-import LogIn from "./views/LogIn";
-import Register from "./views/Register";
-import App from "./views/App";
-import Add from "./views/Add";
-const routes = {
-  '/': LogIn,
-  '/register': Register,
-  '/app': App,
-  '/add': Add,
-};
+import Vue from "vue";
+import App from "./App";
+import { router } from "./routes";
+import { i18n } from "./plugins/i18n";
+import FlagIcon from "vue-flag-icon";
 
 import './assets/css/_reset.css'
 import './assets/css/main.css'
 import './assets/css/media.css'
 
 Vue.config.productionTip = false;
-// const router = new VueRouter({ routes });
+Vue.use(FlagIcon);
 
 new Vue({
-  data: {
-    currentRoute: window.location.pathname
-    },
-  computed: {
-    ViewComponent () {
-      return routes[this.currentRoute] || Error
-    }
-  },
-  render (h) { return h(this.ViewComponent) }
+  router, i18n,
+  render: h =>h(App)
 }).$mount('#app');
