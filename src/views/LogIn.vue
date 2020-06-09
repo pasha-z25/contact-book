@@ -1,26 +1,34 @@
 <template>
   <authorization>
-    <h1 class="title text-center"><span class="big">Авторизируйтесь</span> <br>для управления контактами.</h1>
-    <form action="" class="form d-flex flex-column align-items-center justify-content-center position-center">
-      <input type="email" class="input" placeholder="E-mail" v-model="email">
+    <h1 class="title text-center"><span class="big">{{ $t('msgLogIn') }}</span> <br>{{ $t('msgToManage') }}.</h1>
+    <VForm @submit.prevent="submitLogin" vclass="form d-flex flex-column align-items-center justify-content-center position-center">
+        <v-input type="email" placeholder="E-mail" v-model="email"/>
+        <v-input />
+        <v-input />
+    </VForm>
+<!--
+    <form action="" class="">
+      <input  class="input" placeholder="E-mail">
       <input type="password" class="input" placeholder="Password" v-model="password">
       <button type="submit" class="submit" @click="handleClick">Войти</button>
     </form>
+
     <p class="text text-center">Нет аккаунта? Без паники! <v-link href="/register" class="link">Регистрируемся.</v-link></p>
+
+    -->
   </authorization>
 </template>
 
 <script>
   import Authorization from "../layouts/Authorization";
-  import VLink from "../components/VLink";
-  import routes from "../routes";
-
-  const preloader = document.querySelector('.preloader');
+  import VForm from "../layouts/VForm";
+  import VInput from "../components/VInput";
 
   export default {
     name: "LogIn",
     components: {
-      VLink,
+      VInput,
+      VForm,
       Authorization
     },
     data() {
@@ -32,7 +40,6 @@
     methods: {
       handleClick(e) {
         e.preventDefault();
-        preloader.classList.add('loading');
         let currentCookie;
         const promise = fetch('/api/users/login', {
           method: 'POST',
@@ -65,7 +72,6 @@
                   }).then(response => response.json())
                   .catch(
                           console.log,
-                          preloader.classList.remove('loading')
                           )
                   .then(data => {
                     console.log(data);
@@ -74,10 +80,9 @@
                     this.$root.currentRoute = '/app';
                     window.history.pushState(
                             null,
-                            routes['/app'],
+                            //routes['/app'],
                             '/app'
                     );
-                    preloader.classList.remove('loading');
                   }, 1000)
                 });
       }
