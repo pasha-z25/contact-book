@@ -1,14 +1,24 @@
-// import LogIn from "./views/LogIn";
-// import Register from "./views/Register";
-// import App from "./views/App";
-// export default [
-//     { path: '/', component: LogIn },
-//     { path: '/register', component: Register },
-//     { path: '/app', component: App }
-// ]
-export default {
-    '/': 'LogIn',
-    '/register': 'Register',
-    '/app': 'App',
-    '/add': 'Add',
-}
+import Vue from 'vue'
+import VueRouter from 'vue-router'
+import LogIn from './views/LogIn'
+import Error from "./views/Error";
+
+Vue.use(VueRouter);
+
+export const router = new VueRouter({
+    mode: 'history',
+    routes: [
+        {
+            path: '/',
+            component: LogIn
+        },
+        {
+            path: '/register',
+            component: () => import('./views/Register')
+        },
+        {
+            path: '*',
+            component: Error
+        }
+    ]
+});
