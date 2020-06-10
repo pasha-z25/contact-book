@@ -1,7 +1,10 @@
 {
   "btnLogIn": "Log in",
+  "btnToHome": "To home",
   "msgLogIn": "Log in",
   "msgToManage": "to manage your contacts",
   "msgNoAccountNoPanic": "No account? No panic!",
-  "msgRegister": "Register"
+  "msgRegister": "Register",
+  "msgPageNotFound": "Sorry, but this page was not found.",
+  "msgWillComeBack": "(but maybe she will come back ...)"
 }

@@ -1,7 +1,10 @@
 {
   "btnLogIn": "Войти",
+  "btnToHome": "На главную",
   "msgLogIn": "Авторизируйтесь",
   "msgToManage": "для управления контактами",
   "msgNoAccountNoPanic": "Нет аккаунта? Без паники!",
-  "msgRegister": "Регистрируемся"
+  "msgRegister": "Регистрируемся",
+  "msgPageNotFound": "Простите, но эта страница не найдена",
+  "msgWillComeBack": "(но возможно она ещё вернётся...)"
 }
