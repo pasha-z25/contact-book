@@ -1,19 +1,20 @@
 <template>
     <div class="wrapper d-flex flex-column align-items-center justify-content-center">
+        <set-lang />
         <img src="../assets/images/old-book.png" alt="logo" width="256px" height="256px" class="logo">
-        <h2 class="title text-center">Простите, но эта страница не найдена. <br><span class="small">(но возможно она ещё вернётся...)</span></h2>
+        <h2 class="title text-center">{{ $t('msgPageNotFound') }}. <br><span class="small">{{ $t('msgWillComeBack') }}</span></h2>
         <p class="text text-center">
-            <v-link href="/" class="link">На главную</v-link>
+            <router-link to="/" class="link">{{ $t('btnToHome') }}</router-link>
         </p>
     </div>
 </template>
 
 <script>
-    import VLink from "../components/VLink";
+    import SetLang from "../components/SetLang";
 
     export default {
         name: "Error",
-        components: { VLink },
+        components: { SetLang }
     }
 </script>
 

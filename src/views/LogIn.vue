@@ -19,7 +19,7 @@
   export default {
     name: "LogIn",
     components: {
-        VButton,
+      VButton,
       VInput,
       VForm,
       Authorization
