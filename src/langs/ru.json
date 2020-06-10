@@ -1,4 +1,7 @@
 {
+  "btnLogIn": "Войти",
   "msgLogIn": "Авторизируйтесь",
-  "msgToManage": "для управления контактами"
+  "msgToManage": "для управления контактами",
+  "msgNoAccountNoPanic": "Нет аккаунта? Без паники!",
+  "msgRegister": "Регистрируемся"
 }

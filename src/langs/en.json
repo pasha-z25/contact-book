@@ -1,4 +1,7 @@
 {
+  "btnLogIn": "Log in",
   "msgLogIn": "Log in",
-  "msgToManage": "to manage your contacts"
+  "msgToManage": "to manage your contacts",
+  "msgNoAccountNoPanic": "No account? No panic!",
+  "msgRegister": "Register"
 }
