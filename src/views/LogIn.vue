@@ -3,19 +3,10 @@
     <h1 class="title text-center"><span class="big">{{ $t('msgLogIn') }}</span> <br>{{ $t('msgToManage') }}.</h1>
     <VForm @submit.prevent="submitLogin" vclass="form d-flex flex-column align-items-center justify-content-center position-center">
         <v-input type="email" placeholder="E-mail" v-model="email"/>
-        <v-input />
-        <v-input />
+        <v-input type="password" placeholder="Password" v-model="password" />
+        <v-button type="submit" class="submit" @click="handleClick">{{ $t('btnLogIn') }}</v-button>
     </VForm>
-<!--
-    <form action="" class="">
-      <input  class="input" placeholder="E-mail">
-      <input type="password" class="input" placeholder="Password" v-model="password">
-      <button type="submit" class="submit" @click="handleClick">Войти</button>
-    </form>
-
-    <p class="text text-center">Нет аккаунта? Без паники! <v-link href="/register" class="link">Регистрируемся.</v-link></p>
-
-    -->
+    <p class="text text-center">{{ $t('msgNoAccountNoPanic') }} <router-link to="/register" class="link">{{ $t('msgRegister') }}.</router-link></p>
   </authorization>
 </template>
 
@@ -23,10 +14,12 @@
   import Authorization from "../layouts/Authorization";
   import VForm from "../layouts/VForm";
   import VInput from "../components/VInput";
+  import VButton from "../components/VButton";
 
   export default {
     name: "LogIn",
     components: {
+        VButton,
       VInput,
       VForm,
       Authorization
