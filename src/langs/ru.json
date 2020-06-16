@@ -6,5 +6,7 @@
   "msgNoAccountNoPanic": "Нет аккаунта? Без паники!",
   "msgRegister": "Регистрируемся",
   "msgPageNotFound": "Простите, но эта страница не найдена",
-  "msgWillComeBack": "(но возможно она ещё вернётся...)"
+  "msgWillComeBack": "(но возможно она ещё вернётся...)",
+  "metaLoginTitle": "Адресная книга - страница авторизации",
+  "metaLoginDescription": "Приложение для управления контактами"
 }

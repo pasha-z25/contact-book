@@ -6,5 +6,7 @@
   "msgNoAccountNoPanic": "No account? No panic!",
   "msgRegister": "Register",
   "msgPageNotFound": "Sorry, but this page was not found.",
-  "msgWillComeBack": "(but maybe she will come back ...)"
+  "msgWillComeBack": "(but maybe she will come back ...)",
+  "metaLoginTitle": "Contact book - login page",
+  "metaLoginDescription": "Contact management application"
 }
