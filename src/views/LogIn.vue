@@ -1,20 +1,25 @@
 <template>
   <authorization>
     <h1 class="title text-center"><span class="big">{{ $t('msgLogIn') }}</span> <br>{{ $t('msgToManage') }}.</h1>
-    <VForm vclass="form d-flex flex-column align-items-center justify-content-center position-center">
-        <v-input id="email" type="email" placeholder="E-mail" v-model="med"/>
-        <v-input id="password" type="password" placeholder="Password" v-model="user.password" />
-        <v-button type="submit" class="submit">{{ $t('btnLogIn') }}</v-button>
-    </VForm>
-      <p>{{ med }}</p>
+    <form @submit.prevent="handleClick(user)" vclass="form d-flex flex-column align-items-center justify-content-center position-center">
+        <div class="input-group">
+            <label class="label">
+                <input id="email" type="email" class="input" placeholder="E-mail" v-model="user.email" />
+            </label>
+        </div>
+        <div class="input-group">
+            <label class="label">
+                <input id="password" type="password" class="input" placeholder="Password" v-model="user.password" />
+            </label>
+        </div>
+        <v-button type="submit" class="submit" @click.prevent="handleClick(user)">{{ $t('btnLogIn') }}</v-button>
+    </form>
     <p class="text text-center">{{ $t('msgNoAccountNoPanic') }} <router-link to="/register" class="link">{{ $t('msgRegister') }}.</router-link></p>
   </authorization>
 </template>
 
 <script>
   import Authorization from "../layouts/Authorization";
-  import VForm from "../layouts/VForm";
-  import VInput from "../components/VInput";
   import VButton from "../components/VButton";
   import { mapGetters } from "vuex"
 
@@ -22,8 +27,6 @@
     name: "LogIn",
     components: {
       VButton,
-      VInput,
-      VForm,
       Authorization
     },
     data() {
@@ -40,9 +43,10 @@
             'getUser',
             'getCookie'
         ]),
-        use(user) {
+        use(getCookie, user) {
             let i = `${user.email} + ${user.password}` ;
             console.log(i);
+            console.log(getCookie);
             return i;
         }
     },
