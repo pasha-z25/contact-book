@@ -9,13 +9,12 @@
       <input type="password" class="input" placeholder="Repeat Password" required v-model="repassword">
       <button type="submit" class="submit" @click="handleClick">Регистрация</button>
     </form>
-    <p class="text text-center">Есть аккаунт? <v-link href="/" class="link">Авторизируйтесь.</v-link></p>
+    <p class="text text-center">Есть аккаунт? <router-link to="/" class="link">Авторизируйтесь.</router-link></p>
   </authorization>
 </template>
 
 <script>
   import Authorization from "../layouts/Authorization";
-  import VLink from "../components/VLink";
   import routes from "../routes";
 
   const preloader = document.querySelector('.preloader');
@@ -23,7 +22,6 @@
   export default {
     name: "Register",
     components: {
-      VLink,
       Authorization
     },
     data() {
