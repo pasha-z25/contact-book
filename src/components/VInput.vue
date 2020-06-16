@@ -2,8 +2,7 @@
     <div class="input-group">
         <label class="label">
             <span :class="{ text : label }">{{ label }}</span>
-            <input v-model="inputValue"
-                   :id="id"
+            <input :id="id"
                    :type="type"
                    :class="[vclass ? vclass : '', 'input']"
                    :name="name"
@@ -41,12 +40,12 @@
             placeholder: {
                 type: String,
             }
-        },
-        data () {
-            return {
-                inputValue: '',
-            }
-        },
+        }
+        // data () {
+        //     return {
+        //         inputValue: '',
+        //     }
+        // },
     }
 </script>
 
