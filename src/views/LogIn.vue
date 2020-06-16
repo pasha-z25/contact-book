@@ -1,11 +1,12 @@
 <template>
   <authorization>
     <h1 class="title text-center"><span class="big">{{ $t('msgLogIn') }}</span> <br>{{ $t('msgToManage') }}.</h1>
-    <VForm @submit.prevent="submitLogin" vclass="form d-flex flex-column align-items-center justify-content-center position-center">
-        <v-input type="email" placeholder="E-mail" v-model="email"/>
-        <v-input type="password" placeholder="Password" v-model="password" />
-        <v-button type="submit" class="submit" @click="handleClick">{{ $t('btnLogIn') }}</v-button>
+    <VForm vclass="form d-flex flex-column align-items-center justify-content-center position-center">
+        <v-input id="email" type="email" placeholder="E-mail" v-model="med"/>
+        <v-input id="password" type="password" placeholder="Password" v-model="user.password" />
+        <v-button type="submit" class="submit">{{ $t('btnLogIn') }}</v-button>
     </VForm>
+      <p>{{ med }}</p>
     <p class="text text-center">{{ $t('msgNoAccountNoPanic') }} <router-link to="/register" class="link">{{ $t('msgRegister') }}.</router-link></p>
   </authorization>
 </template>
@@ -15,6 +16,7 @@
   import VForm from "../layouts/VForm";
   import VInput from "../components/VInput";
   import VButton from "../components/VButton";
+  import { mapGetters } from "vuex"
 
   export default {
     name: "LogIn",
@@ -26,19 +28,38 @@
     },
     data() {
       return {
-        email: '',
-        password: ''
+        user: {
+            email: '1',
+            password: '2'
+        },
+        med: 'ggsfn'
       }
     },
+    computed: {
+        ...mapGetters([
+            'getUser',
+            'getCookie'
+        ]),
+        use(user) {
+            let i = `${user.email} + ${user.password}` ;
+            console.log(i);
+            return i;
+        }
+    },
     methods: {
-      handleClick(e) {
+      handleClick(user, getCookie) {
+          event.preventDefault();
+          console.log(user);
+          // this.$store.dispatch('fetchUser', user);
+          console.log(getCookie);
+
+        /*
         e.preventDefault();
         let currentCookie;
         const promise = fetch('/api/users/login', {
           method: 'POST',
           headers: {
             'Content-type': 'application/json',
-
           },
           body: JSON.stringify({
             'email': this.email,
@@ -78,35 +99,21 @@
                     );
                   }, 1000)
                 });
+        */
       }
-    }
+    },
   }
 </script>
 
 <style scoped>
-  .form {
-    max-width: 250px;
-    margin-bottom: var(--indent-default);
-  }
   .title {
     margin-bottom: calc(var(--indent-default) * 2);
   }
   .text {
     margin-bottom: calc(var(--indent-default) * 2);
   }
-  .input, .submit {
-    width: 220px;
-    font-size: 16px;
-  }
-  .input {
-    border: none;
-    border-bottom: 1px solid var(--color-lighgray);
-    background-color: transparent;
-    margin-bottom: var(--indent-default);
-    padding: 5px;
-    color: inherit;
-  }
   .submit {
+    border: none;
     display: inline-block;
     text-align: center;
     cursor: pointer;
