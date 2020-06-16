@@ -1,5 +1,6 @@
 import Vue from "vue";
 import App from "./App";
+import store from "./store"
 import { router } from "./routes";
 import { i18n } from "./plugins/i18n";
 import FlagIcon from "vue-flag-icon";
@@ -40,6 +41,6 @@ router.beforeEach((to, from, next) => {
 });
 
 new Vue({
-  router, i18n,
+  router, i18n, store,
   render: h =>h(App)
 }).$mount('#app');
