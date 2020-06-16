@@ -11,8 +11,8 @@
         methods: {
             setLocale(lang) {
                 import(`../langs/${lang}.json`).then( msg => {
-                    this.$i18n.setLocaleMessage(lang, msg);
-                    this.$i18n.locale = lang;
+                    this.$root.$i18n.setLocaleMessage(lang, msg);
+                    this.$root.$i18n.locale = lang;
                 });
             }
         }
