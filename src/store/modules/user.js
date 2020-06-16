@@ -7,6 +7,9 @@ export default {
     getters: {
         getUser(state) {
             return state.user;
+        },
+        getCookie(state) {
+            return state.cookie;
         }
     },
     mutations: {
