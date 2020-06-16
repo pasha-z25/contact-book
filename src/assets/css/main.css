@@ -151,3 +151,19 @@ body {
     color: var(--color-gray);
     border-bottom-color: var(--color-orange);
 }
+.auth-page .form {
+    max-width: 250px;
+    margin-bottom: var(--indent-default);
+}
+.auth-page .input, .auth-page .submit {
+    width: 220px;
+    font-size: 16px;
+}
+.auth-page .input {
+    border: none;
+    border-bottom: 1px solid var(--color-lighgray);
+    background-color: transparent;
+    margin-bottom: var(--indent-default);
+    padding: 5px;
+    color: inherit;
+}
