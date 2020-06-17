@@ -34,76 +34,17 @@
         user: {
             email: 'test@mail.md',
             password: '6811217'
-        },
+        }
       }
     },
     computed: {
         ...mapGetters([
-            'getUser',
-            'getCookie'
+            'getUser'
         ]),
-        use(getCookie, user) {
-            let i = `${user.email} + ${user.password}` ;
-            console.log(i);
-            console.log(getCookie);
-            return i;
-        }
     },
     methods: {
-      handleClick(user, getCookie) {
-          // event.preventDefault();
-          console.log(user);
+      handleClick(user) {
           this.$store.dispatch('fetchUser', user);
-          console.log(getCookie);
-          this.$router.push = ("/register")
-
-        /*
-        e.preventDefault();
-        let currentCookie;
-        const promise = fetch('/api/users/login', {
-          method: 'POST',
-          headers: {
-            'Content-type': 'application/json',
-          },
-          body: JSON.stringify({
-            'email': this.email,
-            'password': this.password
-          })
-        });
-        // console.log('auth ', this.email, this.password);
-        promise.then(response => response.json())
-                .catch(console.log)
-                .then(data => {
-                  currentCookie = data.cookie;
-                  // console.log(document.cookie);
-                  // console.log(currentCookie.name);
-                  // console.log(currentCookie.value);
-                  document.cookie = `${currentCookie.name}=${currentCookie.value}`;
-                  fetch('/api/phonebook', {
-                    method: 'GET',
-                    mode: 'cors',
-                    credentials: 'include',
-                    withCredentials: true,
-                    headers: {
-                      'Content-type': 'application/json',
-                    },
-                  }).then(response => response.json())
-                  .catch(
-                          console.log,
-                          )
-                  .then(data => {
-                    console.log(data);
-                  });
-                  setTimeout(() => {
-                    this.$root.currentRoute = '/app';
-                    window.history.pushState(
-                            null,
-                            //routes['/app'],
-                            '/app'
-                    );
-                  }, 1000)
-                });
-        */
       }
     },
   }
