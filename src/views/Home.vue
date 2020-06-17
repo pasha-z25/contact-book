@@ -1,36 +1,39 @@
 <template>
-    <div id="app">
-        <v-burger />
-        <v-aside :class="{ open: isOpen }" />
-        <main class="main">
-            <v-header>
-                {{ this.title }}
-            </v-header>
-        </main>
-    </div>
+     <application :title="this.title">
+         <div v-if="contactsLength">
+             <h2>home page</h2>
+         </div>
+         <div v-else>
+             <h2>not contacts</h2>
+         </div>
+     </application>
 </template>
 
 <script>
-    import VHeader from "../components/VHeader";
-    import VAside from "../layouts/VAside";
-    import VBurger from "../components/VBurger";
+    import { mapGetters } from "vuex"
+    import Application from "../layouts/Application";
 
     export default {
-        name: "App",
-        components: {VBurger, VHeader, VAside },
+        name: "Home",
+        components: {
+            Application
+        },
         data() {
             return {
-                isOpen: false,
-                title: "All contacts"
+                title: "Main Page"
             }
-        }
+        },
+        computed: {
+            ...mapGetters([
+                'getContactsLength'
+            ]),
+            contactsLength() {
+                return this.getContactsLength
+            }
+        },
     }
 </script>
 
 <style scoped>
-    #app {
-        display: flex;
-        min-height: 100vh;
-        position: relative;
-    }
+
 </style>
