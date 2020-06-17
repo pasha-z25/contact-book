@@ -42,9 +42,6 @@
                 return this.getAuthStatus
             }
         },
-        methods: {
-
-        }
     }
 
 </script>
