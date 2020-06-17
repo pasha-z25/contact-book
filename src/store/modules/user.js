@@ -1,7 +1,9 @@
-// import router from "vue-router"
+import { router } from "../../routes"
+
 export default {
     state: {
         auth: false,
+        preloader: false,
         cookie: {},
         user: {}
     },
@@ -9,19 +11,32 @@ export default {
         getUser(state) {
             return state.user;
         },
-        getCookie(state) {
-            return state.cookie;
+        getPreloader(state) {
+            return state.preloader;
+        },
+        getAuthStatus(state) {
+            return state.auth
         }
     },
     mutations: {
         setCookie(state, cookie) {
             state.cookie = cookie;
             document.cookie = `${state.cookie.name}=${state.cookie.value}`;
+        },
+        setAuthTrue(state) {
+            state.auth = true;
+        },
+        setPreloaderTrue(state) {
+            state.preloader = true;
+        },
+        setPreloaderFalse(state) {
+            state.preloader = false;
         }
     },
     actions: {
         async fetchUser(ctx, { email, password }) {
             // console.log(ctx);
+            ctx.commit('setPreloaderTrue');
             fetch('/api/users/login', {
                 method: 'POST',
                 headers: {
@@ -35,6 +50,7 @@ export default {
                 .catch(console.log)
                 .then( data => {
                     ctx.commit('setCookie', data.cookie);
+                    console.log('Result:', data.message);
                     fetch('/api/phonebook', {
                         method: 'GET',
                         mode: 'cors',
@@ -48,10 +64,11 @@ export default {
                             console.log,
                         )
                         .then(data => {
-                            console.log(data);
-                            setTimeout(() => {
-                                // this.$router.push = ("/register")
-                            }, 5000)
+                            // console.log('Contacts: ', data);
+                            ctx.commit('addContacts', data);
+                            ctx.commit('setAuthTrue');
+                            ctx.commit('setPreloaderFalse');
+                            router.push("/home")
                         });
                 })
         }
