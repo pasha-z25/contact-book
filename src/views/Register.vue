@@ -17,8 +17,6 @@
   import Authorization from "../layouts/Authorization";
   import routes from "../routes";
 
-  const preloader = document.querySelector('.preloader');
-
   export default {
     name: "Register",
     components: {
@@ -38,7 +36,6 @@
         e.preventDefault();
         (this.password === this.repassword)
         ? (
-          preloader.classList.add('loading'),
           fetch('/api/users/register', {
             method: 'POST',
             headers: {
@@ -61,7 +58,6 @@
                               routes['/'],
                               '/'
                       )
-                      preloader.classList.remove('loading');
                     }, 2000)
                   })
           )
