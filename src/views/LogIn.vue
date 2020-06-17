@@ -1,7 +1,7 @@
 <template>
   <authorization>
     <h1 class="title text-center"><span class="big">{{ $t('msgLogIn') }}</span> <br>{{ $t('msgToManage') }}.</h1>
-    <form @submit.prevent="handleClick(user)" vclass="form d-flex flex-column align-items-center justify-content-center position-center">
+    <form @submit.prevent="handleClick(user)" class="form d-flex flex-column align-items-center justify-content-center position-center">
         <div class="input-group">
             <label class="label">
                 <input id="email" type="email" class="input" placeholder="E-mail" v-model="user.email" />
@@ -32,10 +32,9 @@
     data() {
       return {
         user: {
-            email: '1',
-            password: '2'
+            email: 'test@mail.md',
+            password: '6811217'
         },
-        med: 'ggsfn'
       }
     },
     computed: {
@@ -52,10 +51,11 @@
     },
     methods: {
       handleClick(user, getCookie) {
-          event.preventDefault();
+          // event.preventDefault();
           console.log(user);
-          // this.$store.dispatch('fetchUser', user);
+          this.$store.dispatch('fetchUser', user);
           console.log(getCookie);
+          this.$router.push = ("/register")
 
         /*
         e.preventDefault();
