@@ -3,14 +3,17 @@
         <set-lang />
         <img src="../assets/images/logo.png" alt="logo" width="128px" height="128px" class="logo">
         <slot></slot>
+        <preloader />
     </div>
 </template>
 
 <script>
     import SetLang from "../components/SetLang";
+    import Preloader from "../components/Preloader";
+
     export default {
         name: 'Authorization',
-        components: {SetLang},
+        components: {SetLang, Preloader},
     }
 </script>
 
