@@ -1,3 +1,4 @@
+// import router from "vue-router"
 export default {
     state: {
         auth: false,
@@ -20,8 +21,8 @@ export default {
     },
     actions: {
         async fetchUser(ctx, { email, password }) {
-            console.log(ctx);
-            const result = await fetch('/api/users/login', {
+            // console.log(ctx);
+            fetch('/api/users/login', {
                 method: 'POST',
                 headers: {
                     'Content-type': 'application/json',
@@ -30,8 +31,7 @@ export default {
                     'email': email,
                     'password': password
                 })
-            });
-            result.then(response => response.json())
+            }).then(response => response.json())
                 .catch(console.log)
                 .then( data => {
                     ctx.commit('setCookie', data.cookie);
@@ -49,10 +49,10 @@ export default {
                         )
                         .then(data => {
                             console.log(data);
+                            setTimeout(() => {
+                                // this.$router.push = ("/register")
+                            }, 5000)
                         });
-                    setTimeout(() => {
-                        this.$router.push = ("/register")
-                    }, 5000)
                 })
         }
     },
