@@ -44,6 +44,23 @@ export const router = new VueRouter({
             }
         },
         {
+            path: '/home',
+            component: () => import('./views/Home'),
+            meta: {
+                title: 'Contact book - home page',
+                metaTags: [
+                    {
+                        name: 'description',
+                        content: 'Contact management application'
+                    },
+                    {
+                        property: 'og:description',
+                        content: 'Contact management application'
+                    }
+                ]
+            }
+        },
+        {
             path: '*',
             component: Error
         }
