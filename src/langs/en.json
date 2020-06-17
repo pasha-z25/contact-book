@@ -1,12 +1,15 @@
 {
   "btnLogIn": "Log in",
   "btnToHome": "To home",
+  "msgOr": "or",
   "msgLogIn": "Log in",
   "msgToManage": "to manage your contacts",
   "msgNoAccountNoPanic": "No account? No panic!",
   "msgRegister": "Register",
   "msgPageNotFound": "Sorry, but this page was not found.",
   "msgWillComeBack": "(but maybe she will come back ...)",
+  "msgYouNotLogged": "You are not logged",
+  "msgContactsNotAvailable": "contacts are not yet available to you",
   "metaLoginTitle": "Contact book - login page",
   "metaLoginDescription": "Contact management application"
 }

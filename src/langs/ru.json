@@ -1,12 +1,15 @@
 {
   "btnLogIn": "Войти",
   "btnToHome": "На главную",
+  "msgOr": "или",
   "msgLogIn": "Авторизируйтесь",
   "msgToManage": "для управления контактами",
   "msgNoAccountNoPanic": "Нет аккаунта? Без паники!",
   "msgRegister": "Регистрируемся",
   "msgPageNotFound": "Простите, но эта страница не найдена",
   "msgWillComeBack": "(но возможно она ещё вернётся...)",
+  "msgYouNotLogged": "Вы не прошли авторизацию",
+  "msgContactsNotAvailable": "контакты Вам пока не доступны",
   "metaLoginTitle": "Адресная книга - страница авторизации",
   "metaLoginDescription": "Приложение для управления контактами"
 }
