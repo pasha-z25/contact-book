@@ -1,7 +1,7 @@
 <template>
     <aside class="aside d-flex flex-column">
-        <h2 class="title text-center"><v-link href="/app">Contact book</v-link></h2>
-        <user-card />
+        <h2 class="title text-center"><router-link to="/home">Contact book</router-link></h2>
+<!--        <user-card />-->
         <slot></slot>
         <div class="flex-1"></div>
         <v-link href="/add" class="add-link"><span class="link-text">Add contact</span></v-link>
@@ -10,11 +10,11 @@
 
 <script>
     import VLink from "../components/VLink";
-    import UserCard from "./UserCard";
+    // import UserCard from "./UserCard";
 
     export default {
         name: "VAside",
-        components: {UserCard, VLink },
+        components: {VLink },
     }
 </script>
 
