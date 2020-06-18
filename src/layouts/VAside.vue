@@ -1,8 +1,8 @@
 <template>
     <aside class="aside d-flex flex-column">
         <h2 class="title text-center"><router-link to="/home">Contact book</router-link></h2>
-<!--        <user-card />-->
-        <slot></slot>
+        <user-card />
+        <category-list/>
         <div class="flex-1"></div>
         <router-link to="/add" class="add-link"><span class="link-text">Add contact</span></router-link>
     </aside>
@@ -10,11 +10,12 @@
 
 <script>
 
-    // import UserCard from "./UserCard";
+    import UserCard from "./UserCard";
+    import CategoryList from "./CategoryList";
 
     export default {
         name: "VAside",
-        components: { },
+        components: {CategoryList, UserCard },
     }
 </script>
 
