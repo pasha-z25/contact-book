@@ -5,9 +5,9 @@
             <v-aside/>
             <main class="main">
                 <v-header>{{ title }}</v-header>
-                <div class="content">
+                <section class="content">
                     <slot/>
-                </div>
+                </section>
             </main>
         </template>
         <template v-else>
