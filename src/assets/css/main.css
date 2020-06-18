@@ -167,3 +167,6 @@ body {
     padding: 5px;
     color: inherit;
 }
+.user-card .logo {
+    margin-right: var(--indent-default);
+}
