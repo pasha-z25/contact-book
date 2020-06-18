@@ -11,7 +11,7 @@
 </template>
 
 <script>
-    import VLink from "./VLink";
+    import VLink from "./__VLink";
 
     export default {
         name: "VDropDown",
