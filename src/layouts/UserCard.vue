@@ -4,7 +4,7 @@
         <div class="name-block flex-1">
 <!--            <p class="name">{{ user.role | capitalize }}</p>-->
             <p class="name">{{ user.email }}</p>
-            <router-link to="/" @click.prevent="logOut" class="link">Log out</router-link>
+            <router-link to="#" @click.native="logOut" class="link">Log out</router-link>
         </div>
         <v-drop-down />
     </div>
@@ -38,8 +38,7 @@
         },
         methods: {
             logOut() {
-                this.$store.dispatch('logOut');
-                this.$router.push("/")
+                this.$store.dispatch('initLogOut');
             }
         }
     }
