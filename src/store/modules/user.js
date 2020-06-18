@@ -51,6 +51,20 @@ export default {
                 .then( data => {
                     ctx.commit('setCookie', data.cookie);
                     console.log('Result:', data.message);
+                    fetch('/api/categories', {
+                        method: 'GET',
+                        headers: {
+                            'Content-type': 'application/json',
+                        },
+                    }).then(response => response.json())
+                        .catch(
+                            console.log,
+                        )
+                        .then(data => {
+                            // console.log('Contacts: ', data);
+                            ctx.commit('addCategories', data);
+                            ctx.commit('setAuthTrue');
+                        });
                     fetch('/api/phonebook', {
                         method: 'GET',
                         mode: 'cors',
@@ -67,9 +81,9 @@ export default {
                             // console.log('Contacts: ', data);
                             ctx.commit('addContacts', data);
                             ctx.commit('setAuthTrue');
-                            ctx.commit('setPreloaderFalse');
-                            router.push("/home")
                         });
+                    ctx.commit('setPreloaderFalse');
+                    router.push("/home")
                 })
         }
     },
