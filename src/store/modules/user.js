@@ -1,4 +1,4 @@
-import { router } from "../../routes"
+import { router } from "@/routes"
 
 export default {
     state: {
@@ -26,6 +26,10 @@ export default {
         setAuthTrue(state) {
             state.auth = true;
         },
+        setAuthFalse(state) {
+            state.auth = false;
+            router.push("/")
+        },
         setPreloaderTrue(state) {
             state.preloader = true;
         },
@@ -36,9 +40,20 @@ export default {
             for (let key in userObj) {
                 state.user[key] = userObj[key];
             }
-        }
+        },
+        clearUser(state) {
+            for(let key in state.user) {
+                delete state.user[key];
+            }
+        },
     },
     actions: {
+        initLogOut(ctx) {
+            ctx.commit('clearCategories');
+            ctx.commit('clearContacts');
+            ctx.commit('clearUser');
+            ctx.commit('setAuthFalse');
+        },
         async fetchUser(ctx, { email, password }) {
             // console.log(ctx);
             ctx.commit('setPreloaderTrue');
@@ -82,7 +97,6 @@ export default {
                         .then(data => {
                             console.log('Categories: ', data);
                             ctx.commit('addCategories', data);
-                            ctx.commit('setAuthTrue');
                         });
                     fetch('/api/phonebook', {
                         method: 'GET',
@@ -101,8 +115,10 @@ export default {
                             ctx.commit('addContacts', data);
                             ctx.commit('setAuthTrue');
                         });
-                    ctx.commit('setPreloaderFalse');
-                    router.push("/home")
+                    setTimeout(() => {
+                        ctx.commit('setPreloaderFalse');
+                        router.push("/home")
+                    }, 500);
                 })
         }
     },
