@@ -1,6 +1,7 @@
 @import url('../fonts/font.css');
 :root {
     --color-lighgray: #EFEBE4;
+    --color-lighgtext: #D9D2C6;
     --color-gray: #344652;
     --color-dark: #101F2A;
     --color-orange: #FFB143;
