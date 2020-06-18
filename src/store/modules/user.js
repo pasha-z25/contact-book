@@ -31,6 +31,11 @@ export default {
         },
         setPreloaderFalse(state) {
             state.preloader = false;
+        },
+        addUserInfo(state, userObj) {
+            for (let key in userObj) {
+                state.user[key] = userObj[key];
+            }
         }
     },
     actions: {
@@ -51,6 +56,20 @@ export default {
                 .then( data => {
                     ctx.commit('setCookie', data.cookie);
                     console.log('Result:', data.message);
+                    fetch('/api/users/profile', {
+                        method: 'GET',
+                        headers: {
+                            'Content-type': 'application/json',
+                        },
+                    }).then(response => response.json())
+                        .catch(
+                            console.log,
+                        )
+                        .then(data => {
+                            console.log('User: ', data);
+                            ctx.commit('addUserInfo', data);
+                            // ctx.commit('setAuthTrue');
+                        });
                     fetch('/api/categories', {
                         method: 'GET',
                         headers: {
@@ -61,7 +80,7 @@ export default {
                             console.log,
                         )
                         .then(data => {
-                            // console.log('Contacts: ', data);
+                            console.log('Categories: ', data);
                             ctx.commit('addCategories', data);
                             ctx.commit('setAuthTrue');
                         });
@@ -78,7 +97,7 @@ export default {
                             console.log,
                         )
                         .then(data => {
-                            // console.log('Contacts: ', data);
+                            console.log('Contacts: ', data);
                             ctx.commit('addContacts', data);
                             ctx.commit('setAuthTrue');
                         });
