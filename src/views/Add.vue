@@ -1,63 +1,105 @@
 <template>
-    <div id="app">
-        <v-burger />
-        <v-aside :class="{ open: isOpen }" />
-        <main class="main">
-            <v-header>
-                {{ this.title }}
-            </v-header>
-            <section class="content">
-                <div class="input-block">
-                    <v-input id="first-name" class="light" vclass="line" label="Имя" name="Имя" placeholder="Name" required/>
-                </div>
-                <div class="input-block">
-                    <v-input id="last-name" class="light" vclass="line" label="Фамилия" name="Фамилия" placeholder="Surname"/>
-                </div>
-                <div class="input-block">
-                    <v-input id="phone" type="tel" class="light" vclass="line" label="Телефон" name="Телефон" placeholder="Phone"/>
-                </div>
-                <div class="input-block">
-                    <v-input id="email" type="email" class="light" vclass="line" label="E-mail" name="E-mail" placeholder="E-mail"/>
-                </div>
-                <div class="input-block">
-                    <v-input id="birthday" type="date" class="light" vclass="line" label="Дата рождения" name="Дата рождения" placeholder="Birthday"/>
-                </div>
-                <div class="text-center">
-                    <v-button name="Добавить" @click="addContact"/>
-                </div>
-            </section>
-        </main>
-    </div>
+    <application :title="this.title">
+        <div class="input-block">
+            <div class="input-group light">
+                <label class="label">
+                    <span class="text">Имя</span>
+                    <input id="first-name" type="text" name="Имя" class="input line" v-model="contact.name" required/>
+                </label>
+            </div>
+        </div>
+        <div class="input-block">
+            <div class="input-group light">
+                <label class="label">
+                    <span class="text">Фамилия</span>
+                    <input id="last-name" type="text" name="Фамилия" class="input line" v-model="contact.surname" required/>
+                </label>
+            </div>
+        </div>
+        <div class="input-block">
+            <div class="input-group light">
+                <label class="label">
+                    <span class="text">Телефон</span>
+                    <input id="phone" type="tel" name="Телефон" class="input line" v-model="contact.phone" required/>
+                </label>
+            </div>
+        </div>
+        <div class="input-block">
+            <div class="input-group light">
+                <label class="label">
+                    <span class="text">E-mail</span>
+                    <input id="email" type="email" name="E-mail" class="input line" v-model="contact.email" required/>
+                </label>
+            </div>
+        </div>
+        <div class="input-block">
+            <div class="input-group light">
+                <label class="label">
+                    <span class="text">Дата рождения</span>
+                    <input id="birthday" type="date" name="Дата_рождения" class="input line" v-model="contact.bornDate" required/>
+                </label>
+            </div>
+        </div>
+        <div class="input-block">
+            <div class="input-group light">
+                <label class="label">
+                    <span class="text">Категория</span>
+                    <select id="category" name="Категория" v-model="contact.id">
+                        <option v-for="category in categories" :key="category._id" :value="category._id">{{ category.name }}</option>
+                    </select>
+                </label>
+            </div>
+        </div>
+        <div class="text-center">
+            <v-button name="Добавить" @click.native="addContact(contact)"/>
+        </div>
+    </application>
 </template>
 
 <script>
-    import VHeader from "../components/VHeader";
-    import VAside from "../layouts/VAside";
-    import VInput from "../components/VInput";
-    import VBurger from "../components/VBurger";
+    import { mapGetters } from "vuex"
+    import Application from "../layouts/Application";
     import VButton from "../components/VButton";
 
     export default {
         name: "Add",
-        components: {VButton, VBurger, VInput, VHeader, VAside },
+        components: { Application, VButton },
         data() {
             return {
-                isOpen: false,
-                title: "Add contact"
+                title: "Add new contact",
+                contact: {
+                    name: '',
+                    surname: '',
+                    email: '',
+                    id: '',
+                    category: '',
+                    phone: '',
+                    bornDate: '',
+                }
             }
         },
+        computed: {
+            ...mapGetters([
+                'getCategories',
+            ]),
+            categories() {
+                return this.getCategories
+            },
+            // categoryName(categories, id) {
+            //     return categories.filter( (item, id) => {
+            //         if (item._id === id) {}
+            //     } )
+            // },
+        },
         methods: {
-            addContact () {
-                fetch()
+            addContact (contact) {
+                console.log(contact);
+                // this.$store.dispatch('addNewContact', contact);
             }
         }
     }
 </script>
 
 <style scoped>
-    #app {
-        display: flex;
-        min-height: 100vh;
-        position: relative;
-    }
+
 </style>
