@@ -1,6 +1,6 @@
 <template>
     <div class="logo">
-        <img src="" alt="" class="logo-image">
+<!--        <img src="./src/assets/images/user-avatar.png" alt="avatar" class="logo-image">-->
     </div>
 </template>
 
@@ -21,7 +21,7 @@
         text-align: center;
         overflow: hidden;
     }
-    .logo-image {
-        width: 100%;
-    }
+    /*.logo-image {*/
+    /*    width: 100%;*/
+    /*}*/
 </style>
