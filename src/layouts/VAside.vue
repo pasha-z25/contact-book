@@ -4,17 +4,17 @@
 <!--        <user-card />-->
         <slot></slot>
         <div class="flex-1"></div>
-        <v-link href="/add" class="add-link"><span class="link-text">Add contact</span></v-link>
+        <router-link to="/add" class="add-link"><span class="link-text">Add contact</span></router-link>
     </aside>
 </template>
 
 <script>
-    import VLink from "../components/VLink";
+
     // import UserCard from "./UserCard";
 
     export default {
         name: "VAside",
-        components: {VLink },
+        components: { },
     }
 </script>
 
