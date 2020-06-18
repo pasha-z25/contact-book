@@ -2,12 +2,9 @@
     <button
             :id="id"
             :type="type"
-            :class="vclass"
-
+            :class="[vclass, 'btn']"
     >
-        <span class="text">
-            <slot> {{ name }}</slot>
-        </span>
+        <span class="text">{{ name }}</span>
     </button>
 </template>
 
@@ -28,7 +25,7 @@
             },
             vclass: {
                 type: String,
-                default: 'btn'
+                default: 'btn-orange'
             }
         }
     }
