@@ -10,7 +10,7 @@
 </template>
 
 <script>
-    import VLink from "../components/VLink";
+    import VLink from "../components/__VLink";
     import VLogo from "../components/VLogo";
     import VDropDown from "../components/VDropDown";
     import user from "../user";
