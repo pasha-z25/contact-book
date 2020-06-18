@@ -2,9 +2,12 @@
      <application :title="this.title">
          <div v-if="contactsLength">
              <h2>home page</h2>
+             <p>contactsLength {{ contactsLength }}</p>
+             <p>categoriesLength {{ categoriesLength }}</p>
          </div>
          <div v-else>
              <h2>not contacts</h2>
+             <p>categoriesLength {{ categoriesLength }}</p>
          </div>
      </application>
 </template>
@@ -25,10 +28,14 @@
         },
         computed: {
             ...mapGetters([
-                'getContactsLength'
+                'getContactsLength',
+                'getCategoriesLength'
             ]),
             contactsLength() {
                 return this.getContactsLength
+            },
+            categoriesLength() {
+                return this.getCategoriesLength
             }
         },
     }
