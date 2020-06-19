@@ -44,7 +44,7 @@
             <div class="input-group light">
                 <label class="label">
                     <span class="text">Категория</span>
-                    <select id="category" name="Категория" v-model="contact.id">
+                    <select id="category" name="Категория" v-model="contact.id" @change="handleChange">
                         <option v-for="category in categories" :key="category._id" :value="category._id">{{ category.name }}</option>
                     </select>
                 </label>
@@ -64,7 +64,7 @@
     export default {
         name: "Add",
         components: { Application, VButton },
-        data() {
+        data(handleChange) {
             return {
                 title: "Add new contact",
                 contact: {
@@ -72,7 +72,7 @@
                     surname: '',
                     email: '',
                     id: '',
-                    category: '',
+                    category: handleChange,
                     phone: '',
                     bornDate: '',
                 }
@@ -93,8 +93,14 @@
         },
         methods: {
             addContact (contact) {
-                console.log(contact);
-                // this.$store.dispatch('addNewContact', contact);
+                console.log('Obj cont: ',contact);
+                this.$store.dispatch('addNewContact', contact);
+            },
+            handleChange(e) {
+                if(e.target.options.selectedIndex > -1) {
+                    // console.log(e.target.options[e.target.options.selectedIndex].innerText);
+                    this.contact.category = e.target.options[e.target.options.selectedIndex].innerText
+                }
             }
         }
     }
