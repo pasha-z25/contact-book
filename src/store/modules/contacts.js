@@ -39,31 +39,35 @@ export default {
         },
     },
     actions: {
-        addNewContact(ctx, { name, surname, email, id, category, phone, bornDate }) {
+        addNewContact(ctx, contact) {
+            console.log('POST obj', contact);
             ctx.commit('setPreloaderTrue');
             fetch('/api/phonebook', {
                 method: 'POST',
+                mode: 'cors',
+                credentials: 'include',
+                withCredentials: true,
                 headers: {
                     'Content-type': 'application/json',
                 },
                 body: JSON.stringify({
-                    'name': name,
-                    'surname': surname,
-                    'email': [email],
+                    'name': contact.name,
+                    'surname': contact.surname,
+                    'email': [ contact.email ],
                     'phone': [{
-                        '_id': id,
-                        'category': category,
-                        'value': phone,
+                        '_id': contact.id,
+                        'category': contact.category,
+                        'value': contact.phone,
                     }],
-                    'bornDate': bornDate,
-                    'category': id
+                    'bornDate': contact.bornDate,
+                    'category': contact.id
                 })
             }).then(response => response.json())
                 .catch(console.log)
                 .then(data => {
                     console.log('Contact: ', data);
                     console.log('Result: ', data.message);
-                    ctx.commit('addOneContact', data);
+                    // ctx.commit('addOneContact', data);
                     setTimeout(() => {
                         ctx.commit('setPreloaderFalse');
                         router.push("/home")
