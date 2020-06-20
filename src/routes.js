@@ -78,6 +78,23 @@ export const router = new VueRouter({
             }
         },
         {
+            path: '/category',
+            component: () => import('./views/EditCategory'),
+            meta: {
+                title: 'Contact book - edit category',
+                metaTags: [
+                    {
+                        name: 'description',
+                        content: 'Contact management application'
+                    },
+                    {
+                        property: 'og:description',
+                        content: 'Contact management application'
+                    }
+                ]
+            }
+        },
+        {
             path: '*',
             component: Error
         }
