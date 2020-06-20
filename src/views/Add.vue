@@ -85,11 +85,6 @@
             categories() {
                 return this.getCategories
             },
-            // categoryName(categories, id) {
-            //     return categories.filter( (item, id) => {
-            //         if (item._id === id) {}
-            //     } )
-            // },
         },
         methods: {
             addContact (contact) {
