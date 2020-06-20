@@ -88,7 +88,6 @@
         },
         methods: {
             addContact (contact) {
-                console.log('Obj cont: ',contact);
                 this.$store.dispatch('addNewContact', contact);
             },
             handleChange(e) {
