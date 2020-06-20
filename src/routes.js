@@ -62,9 +62,43 @@ export const router = new VueRouter({
         },
         {
             path: '/add',
-            component: () => import('./views/Add'),
+            component: () => import('./views/AddContact'),
             meta: {
                 title: 'Contact book - add contact',
+                metaTags: [
+                    {
+                        name: 'description',
+                        content: 'Contact management application'
+                    },
+                    {
+                        property: 'og:description',
+                        content: 'Contact management application'
+                    }
+                ]
+            }
+        },
+        {
+            path: '/edit/:id',
+            component: () => import('./views/EditContact'),
+            meta: {
+                title: 'Contact book - edit contact',
+                metaTags: [
+                    {
+                        name: 'description',
+                        content: 'Contact management application'
+                    },
+                    {
+                        property: 'og:description',
+                        content: 'Contact management application'
+                    }
+                ]
+            }
+        },
+        {
+            path: '/view/:id',
+            component: () => import('./views/ViewContact'),
+            meta: {
+                title: 'Contact book - view contact',
                 metaTags: [
                     {
                         name: 'description',
