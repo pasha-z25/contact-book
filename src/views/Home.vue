@@ -1,16 +1,23 @@
 <template>
      <application :title="this.title">
-         <div v-if="contactsLength">
-             <h2>home page</h2>
-             <div v-for="contact in contacts" :key="contact.id">
-                 {{ contact }}
+         <div v-if="contactsLength" class="d-flex flex-wrap">
+             <ContactCard
+                     v-for="contact in contacts"
+                     :key="contact._id"
+                     :id="contact._id"
+                     :name="contact.name"
+                     :surname="contact.surname"
+                     :category="contact.category.name"
+             />
+             <div class="w-100">
+                 <hr>
+                 <p>Всего контактов: {{ contactsLength }}</p>
+                 <p>Категорий: {{ categoriesLength }}</p>
              </div>
-             <p>contactsLength {{ contactsLength }}</p>
-             <p>categoriesLength {{ categoriesLength }}</p>
          </div>
          <div v-else>
-             <h2>not contacts</h2>
-             <p>categoriesLength {{ categoriesLength }}</p>
+             <p>Извините, у Вас ещё нет контактов.</p>
+             <p>Вы можете <router-link to="/add" class="link">добавить</router-link> контакты сейчас или позже.</p>
          </div>
      </application>
 </template>
@@ -18,10 +25,12 @@
 <script>
     import { mapGetters } from "vuex"
     import Application from "../layouts/Application";
+    import ContactCard from "../components/ContactCard";
 
     export default {
         name: "Home",
         components: {
+            ContactCard,
             Application
         },
         data() {
