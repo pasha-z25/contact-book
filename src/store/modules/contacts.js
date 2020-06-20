@@ -40,7 +40,7 @@ export default {
     },
     actions: {
         addNewContact(ctx, contact) {
-            console.log('POST obj', contact);
+            // console.log('POST obj', contact);
             ctx.commit('setPreloaderTrue');
             fetch('/api/phonebook', {
                 method: 'POST',
@@ -65,7 +65,53 @@ export default {
             }).then(response => response.json())
                 .catch(console.log)
                 .then(data => {
-                    console.log('Contact: ', data);
+                    // console.log('Contact: ', data);
+                    console.log('Result: ', data.message);
+                    // ctx.commit('addOneContact', data);
+                    setTimeout(() => {
+                        ctx.commit('setPreloaderFalse');
+                        router.push("/home")
+                    }, 500)
+                })
+        },
+        addNewCategory(ctx, { name }) {
+            // console.log('CAT obj', category);
+            ctx.commit('setPreloaderTrue');
+            fetch('/api/categories', {
+                method: 'POST',
+                mode: 'cors',
+                credentials: 'include',
+                withCredentials: true,
+                headers: {
+                    'Content-type': 'application/json',
+                },
+                body: JSON.stringify({
+                    'name': name,
+                })
+            }).then(response => response.json())
+                .catch(console.log)
+                .then(data => {
+                    // console.log('Category: ', data);
+                    console.log('Result: ', data.message);
+                    // ctx.commit('addOneContact', data);
+                    setTimeout(() => {
+                        ctx.commit('setPreloaderFalse');
+                        router.push("/home")
+                    }, 500)
+                })
+        },
+        removeCategory(ctx, { id }) {
+            // console.log('CAT obj', category);
+            ctx.commit('setPreloaderTrue');
+            fetch(`/api/categories/${id}`, {
+                method: 'DELETE',
+                headers: {
+                    'Content-type': 'application/json',
+                }
+            }).then(response => response.json())
+                .catch(console.log)
+                .then(data => {
+                    // console.log('Category: ', data);
                     console.log('Result: ', data.message);
                     // ctx.commit('addOneContact', data);
                     setTimeout(() => {
