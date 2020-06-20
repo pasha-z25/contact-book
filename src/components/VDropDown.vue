@@ -2,20 +2,17 @@
     <div class="dropdown">
         <p class="link" @click="isOpen = !isOpen"><span class="point"></span><span class="point"></span><span class="point"></span></p>
         <ul class="dropdown-menu" :class="{ open: isOpen }">
-            <li class="dropdown-item"><v-link href="#" class="dropdown-link">View</v-link></li>
-            <li class="dropdown-item"><v-link href="#" class="dropdown-link">Edit</v-link></li>
-            <li class="dropdown-item"><v-link href="#" class="dropdown-link">Delete</v-link></li>
+            <li class="dropdown-item"><span class="dropdown-link">View</span></li>
+            <li class="dropdown-item"><span class="dropdown-link">Edit</span></li>
+            <li class="dropdown-item"><span class="dropdown-link">Delete</span></li>
         </ul>
         <slot></slot>
     </div>
 </template>
 
 <script>
-    import VLink from "./__VLink";
-
     export default {
         name: "VDropDown",
-        components: { VLink },
         data() {
             return {
                 isOpen: false
