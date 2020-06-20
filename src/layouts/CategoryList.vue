@@ -1,9 +1,11 @@
 <template>
     <div class="category-wrapper">
+        <router-link to="/category" class="link"><span class="link-text">Edit</span></router-link>
         <p class="title">Categories</p>
         <ul class="list">
             <li v-for="category in categories" :key="category._id" class="list_item">{{ category.name }}</li>
         </ul>
+
     </div>
 </template>
 
@@ -52,12 +54,16 @@
         position: absolute;
         top: 0;
         left: 0;
-        /*transition: all linear .2s;*/
     }
     .list_item:hover {
         background: linear-gradient(90deg, var(--color-dark) 0, var(--color-gray) 100%);
     }
     .list_item:hover::before {
         background-color: var(--color-orange);
+    }
+    .link {
+        color: var(--color-orange);
+        float: right;
+        padding-right: var(--indent-default);
     }
 </style>
