@@ -62,7 +62,7 @@
     import VButton from "../components/VButton";
 
     export default {
-        name: "Add",
+        name: "AddContact",
         components: { Application, VButton },
         data(handleChange) {
             return {
