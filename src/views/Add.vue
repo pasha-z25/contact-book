@@ -44,7 +44,7 @@
             <div class="input-group light">
                 <label class="label">
                     <span class="text">Категория</span>
-                    <select id="category" name="Категория" v-model="contact.id" @change="handleChange">
+                    <select id="category" name="Категория" v-model="contact.id" @change="handleChange" class="select">
                         <option v-for="category in categories" :key="category._id" :value="category._id">{{ category.name }}</option>
                     </select>
                 </label>
