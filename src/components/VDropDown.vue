@@ -3,9 +3,11 @@
         <p class="link" @click="isOpen = !isOpen"><span class="point"></span><span class="point"></span><span class="point"></span></p>
         <ul class="dropdown-menu" :class="{ open: isOpen }">
             <li class="dropdown-item"><span class="dropdown-link">View</span></li>
-            <li class="dropdown-item"><span class="dropdown-link">Edit</span></li>
+            <li class="dropdown-item"><router-link :to=link class="dropdown-link">Edit</router-link></li>
             <li class="dropdown-item"><span class="dropdown-link">Delete</span></li>
         </ul>
+        <p>{{ id }}</p>
+        <p>{{ link }}</p>
         <slot></slot>
     </div>
 </template>
@@ -13,9 +15,15 @@
 <script>
     export default {
         name: "VDropDown",
+        props: ['id'],
         data() {
             return {
-                isOpen: false
+                isOpen: false,
+            }
+        },
+        computed: {
+            link(id) {
+                return `/edit/${id}`
             }
         }
     }
