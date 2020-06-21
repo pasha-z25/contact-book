@@ -50,6 +50,24 @@
                 </label>
             </div>
         </div>
+        <div class="input-block">
+            <div class="input-group light">
+                <label class="label">
+                    <span class="text">Должность</span>
+                    <input id="position" type="text" name="Должность" class="input line" v-model="contact.position"/>
+                </label>
+            </div>
+        </div>
+        <div class="input-block">
+            <div class="input-group light">
+                <label class="label">
+                    <span class="text">Описание</span>
+                    <textarea id="information" name="Описание" class="textarea line" v-model="contact.information" maxlength="1024"></textarea>
+                </label>
+            </div>
+        </div>
+
+
         <div class="text-center">
             <v-button name="Добавить" @click.native="addContact(contact)"/>
         </div>
@@ -75,6 +93,8 @@
                     category: handleChange,
                     phone: '',
                     bornDate: '',
+                    position: '',
+                    information: '',
                 }
             }
         },
@@ -88,7 +108,7 @@
         },
         methods: {
             addContact (contact) {
-                this.$store.dispatch('addNewContact', contact);
+                this.$store.dispatch('modificationContact', contact);
             },
             handleChange(e) {
                 if(e.target.options.selectedIndex > -1) {
