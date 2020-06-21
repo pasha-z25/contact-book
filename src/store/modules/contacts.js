@@ -74,6 +74,43 @@ export default {
                     }, 500)
                 })
         },
+        modificationContact(ctx, contact) {
+            // console.log('POST obj', contact);
+            ctx.commit('setPreloaderTrue');
+            fetch(`/api/phonebook/${contact.id}`, {
+                method: 'PUT',
+                mode: 'cors',
+                credentials: 'include',
+                withCredentials: true,
+                headers: {
+                    'Content-type': 'application/json',
+                },
+                body: JSON.stringify({
+                    'name': contact.name,
+                    'surname': contact.surname,
+                    'email': [ contact.email ],
+                    'phone': [{
+                        '_id': contact.id,
+                        'category': contact.category,
+                        'value': contact.phone,
+                    }],
+                    'bornDate': contact.bornDate,
+                    'category': contact.id,
+                    'position': contact.position,
+                    'information': contact.information,
+                })
+            }).then(response => response.json())
+                .catch(console.log)
+                .then(data => {
+                    // console.log('Contact: ', data);
+                    console.log('Result: ', data.message);
+                    // ctx.commit('addOneContact', data);
+                    setTimeout(() => {
+                        ctx.commit('setPreloaderFalse');
+                        router.push("/home")
+                    }, 500)
+                })
+        },
         addNewCategory(ctx, { name }) {
             // console.log('CAT obj', category);
             ctx.commit('setPreloaderTrue');
