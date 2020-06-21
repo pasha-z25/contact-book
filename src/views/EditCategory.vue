@@ -56,12 +56,10 @@
             },
         },
         methods: {
-            removeCategory (contact) {
-                console.log('Obj cont: ',contact);
-                this.$store.dispatch('removeCategory', contact);
+            removeCategory (category) {
+                this.$store.dispatch('removeCategory', category);
             },
             addCategory (category) {
-                console.log('Obj cont: ',category);
                 this.$store.dispatch('addNewCategory', category);
             }
         }
