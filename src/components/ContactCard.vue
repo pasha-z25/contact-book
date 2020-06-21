@@ -6,13 +6,11 @@
             <span class="surname">{{ surname }}</span>
             <span class="category w-100">{{ category }}</span>
         </p>
-        <v-drop-down />
+        <v-drop-down :id="id"/>
     </div>
 </template>
 
 <script>
-    // import { mapGetters } from "vuex"
-
     import VDropDown from "./VDropDown";
     import VLogo from "./VLogo";
     export default {
