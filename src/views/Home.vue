@@ -10,7 +10,7 @@
                      :category="contact.category.name"
              />
              <div class="w-100">
-                 <hr>
+                 <hr style="margin-bottom: 15px">
                  <p>Всего контактов: {{ contactsLength }}</p>
                  <p>Категорий: {{ categoriesLength }}</p>
              </div>
