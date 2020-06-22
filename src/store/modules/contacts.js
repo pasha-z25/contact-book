@@ -3,11 +3,15 @@ import { router } from "@/routes"
 export default {
     state: {
         categories: [],
-        contacts: []
+        contacts: [],
+        currentContact: {}
     },
     getters: {
         getContacts(state) {
             return state.contacts;
+        },
+        getCurrentContact(state) {
+            return state.currentContact;
         },
         getContactsLength(state) {
             return state.contacts.length;
@@ -36,6 +40,11 @@ export default {
         },
         addOneContact(state, payload) {
             state.contacts.push(payload)
+        },
+        addCurrentContact(state, contact) {
+            for (let key in contact) {
+                state.currentContact[key] = contact[key];
+            }
         },
     },
     actions: {
@@ -68,6 +77,26 @@ export default {
                     // console.log('Contact: ', data);
                     console.log('Result: ', data.message);
                     // ctx.commit('addOneContact', data);
+                    setTimeout(() => {
+                        ctx.commit('setPreloaderFalse');
+                        router.push("/home")
+                    }, 500)
+                })
+        },
+        fullInfoContact(ctx, id) {
+            // console.log('POST obj', contact);
+            ctx.commit('setPreloaderTrue');
+            fetch(`/api/phonebook/${id}`, {
+                method: 'GET',
+                headers: {
+                    'Content-type': 'application/json',
+                },
+            }).then(response => response.json())
+                .catch(console.log)
+                .then(data => {
+                    console.log('Contact: ', data);
+                    console.log('Result: ', data.message);
+                    ctx.commit('addCurrentContact', data);
                     setTimeout(() => {
                         ctx.commit('setPreloaderFalse');
                         router.push("/home")

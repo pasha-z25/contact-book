@@ -5,7 +5,8 @@ export default {
         auth: false,
         preloader: false,
         cookie: {},
-        user: {}
+        user: {},
+        currentContactId: '',
     },
     getters: {
         getUser(state) {
@@ -16,7 +17,10 @@ export default {
         },
         getAuthStatus(state) {
             return state.auth
-        }
+        },
+        getCurrentContactId(state) {
+            return state.currentContactId;
+        },
     },
     mutations: {
         setCookie(state, cookie) {
@@ -25,6 +29,12 @@ export default {
         },
         setAuthTrue(state) {
             state.auth = true;
+        },
+        setCurrentContactId(state, id) {
+            state.currentContactId = id;
+        },
+        clearCurrentContactId(state) {
+            state.currentContactId = '';
         },
         setAuthFalse(state) {
             state.auth = false;
@@ -120,6 +130,12 @@ export default {
                         router.push("/home")
                     }, 500);
                 })
+        },
+        setContactId(ctx, id) {
+            ctx.commit('setCurrentContactId', id);
+        },
+        clearContactId(ctx) {
+            ctx.commit('clearCurrentContactId');
         }
     },
     strict: process.env.NODE_ENV !== 'production'
