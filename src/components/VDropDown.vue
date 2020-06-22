@@ -6,8 +6,6 @@
             <li class="dropdown-item"><router-link :to=link class="dropdown-link">Edit</router-link></li>
             <li class="dropdown-item"><span class="dropdown-link">Delete</span></li>
         </ul>
-        <p>{{ id }}</p>
-        <p>{{ link }}</p>
         <slot></slot>
     </div>
 </template>
@@ -22,7 +20,7 @@
             }
         },
         computed: {
-            link(id) {
+            link({id}) {
                 return `/edit/${id}`
             }
         }
