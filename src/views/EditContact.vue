@@ -84,7 +84,7 @@
         components: { Application, VButton },
         data(handleChange) {
             return {
-                title: "Add new contact",
+                title: "Edit current contact",
                 contact: {
                     name: '',
                     surname: '',
