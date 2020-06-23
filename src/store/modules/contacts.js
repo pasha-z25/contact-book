@@ -95,11 +95,10 @@ export default {
                 .catch(console.log)
                 .then(data => {
                     console.log('Contact: ', data);
-                    console.log('Result: ', data.message);
                     ctx.commit('addCurrentContact', data);
                     setTimeout(() => {
                         ctx.commit('setPreloaderFalse');
-                        router.push("/home")
+                        // router.push("/home")
                     }, 500)
                 })
         },
