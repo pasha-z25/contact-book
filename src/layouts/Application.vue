@@ -7,6 +7,7 @@
                 <v-header>{{ title }}</v-header>
                 <section class="content">
                     <slot/>
+                    <preloader />
                 </section>
             </main>
         </template>
@@ -22,12 +23,13 @@
     import VBurger from "../components/VBurger";
     import VHeader from "../components/VHeader";
     import VAside from "./VAside";
+    import Preloader from "../components/Preloader";
 
     export default {
         name: "Application",
         props: ['title'],
         components: {
-            VBurger, VAside, VHeader, NotAuth
+            VBurger, VAside, VHeader, NotAuth, Preloader
         },
         data() {
             return {
@@ -55,6 +57,7 @@
     }
     .main {
         background: var(--color-lighgray);
+        position: relative;
     }
     .content {
         padding: calc(var(--indent-default) * 2);
