@@ -20,7 +20,7 @@
             <div class="input-group light">
                 <label class="label">
                     <span class="text">Телефон</span>
-                    <input id="phone" type="tel" name="Телефон" class="input line" v-model="contact.phone" required/>
+                    <input id="phone" type="tel" name="Телефон" class="input line" v-model="contact.phone[0].value" required/>
                 </label>
             </div>
         </div>
@@ -28,7 +28,7 @@
             <div class="input-group light">
                 <label class="label">
                     <span class="text">E-mail</span>
-                    <input id="email" type="email" name="E-mail" class="input line" v-model="contact.email" required/>
+                    <input id="email" type="email" name="E-mail" class="input line" v-model="contact.email[0]" required/>
                 </label>
             </div>
         </div>
@@ -36,7 +36,7 @@
             <div class="input-group light">
                 <label class="label">
                     <span class="text">Дата рождения</span>
-                    <input id="birthday" type="date" name="Дата_рождения" class="input line" v-model="contact.bornDate" required/>
+                    <input id="birthday" type="text" name="Дата_рождения" class="input line" v-model="contact.bornDate" required/>
                 </label>
             </div>
         </div>
@@ -82,17 +82,20 @@
     export default {
         name: "EditContact",
         components: { Application, VButton },
-        data(handleChange) {
+        data(cont, handleChange) {
             return {
                 title: "Edit current contact",
                 contact: {
-                    name: '',
-                    surname: '',
-                    email: '',
-                    id: '',
+                    _id: cont._id,
+                    name: cont.name,
+                    surname: cont.surname,
+                    email: [cont.email[0]],
+                    bornDate: cont.bornDate,
+
+
                     category: handleChange,
                     phone: '',
-                    bornDate: '',
+
                     position: '',
                     information: '',
                 }
@@ -101,9 +104,18 @@
         computed: {
             ...mapGetters([
                 'getCategories',
+                'getCurrentContact',
             ]),
             categories() {
                 return this.getCategories
+            },
+            cont() {
+                return this.getCurrentContact
+            },
+        },
+        filters: {
+            cutDate(value) {
+                return value.substring(0, 10)
             },
         },
         methods: {
