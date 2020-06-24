@@ -83,7 +83,7 @@ export default {
                     }, 500)
                 })
         },
-        fullInfoContact(ctx, id) {
+        fullInfoContactView(ctx, id) {
             // console.log('POST obj', contact);
             ctx.commit('setPreloaderTrue');
             fetch(`/api/phonebook/${id}`, {
@@ -98,7 +98,26 @@ export default {
                     ctx.commit('addCurrentContact', data);
                     setTimeout(() => {
                         ctx.commit('setPreloaderFalse');
-                        // router.push("/home")
+                        router.push(`/view/${id}`)
+                    }, 500)
+                })
+        },
+        fullInfoContactEdit(ctx, id) {
+            // console.log('POST obj', contact);
+            ctx.commit('setPreloaderTrue');
+            fetch(`/api/phonebook/${id}`, {
+                method: 'GET',
+                headers: {
+                    'Content-type': 'application/json',
+                },
+            }).then(response => response.json())
+                .catch(console.log)
+                .then(data => {
+                    console.log('Contact: ', data);
+                    ctx.commit('addCurrentContact', data);
+                    setTimeout(() => {
+                        ctx.commit('setPreloaderFalse');
+                        router.push(`/edit/${id}`)
                     }, 500)
                 })
         },
@@ -113,20 +132,21 @@ export default {
                 headers: {
                     'Content-type': 'application/json',
                 },
-                body: JSON.stringify({
-                    'name': contact.name,
-                    'surname': contact.surname,
-                    'email': [ contact.email ],
-                    'phone': [{
-                        '_id': contact.id,
-                        'category': contact.category,
-                        'value': contact.phone,
-                    }],
-                    'bornDate': contact.bornDate,
-                    'category': contact.id,
-                    'position': contact.position,
-                    'information': contact.information,
-                })
+                body: JSON.stringify(contact)
+                // body: JSON.stringify({
+                //     'name': contact.name,
+                //     'surname': contact.surname,
+                //     'email': [ contact.email ],
+                //     'phone': [{
+                //         '_id': contact.id,
+                //         'category': contact.category,
+                //         'value': contact.phone,
+                //     }],
+                //     'bornDate': contact.bornDate,
+                //     'category': contact.id,
+                //     'position': contact.position,
+                //     'information': contact.information,
+                // })
             }).then(response => response.json())
                 .catch(console.log)
                 .then(data => {
