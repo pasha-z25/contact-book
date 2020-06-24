@@ -24,6 +24,7 @@
         background: -o-linear-gradient(top, var(--color-dark) 0%, var(--color-gray) 100%);
         background: linear-gradient(180deg, var(--color-dark) 0%, var(--color-gray) 100%);
         min-height: 100vh;
+        position: relative;
     }
     .logo {
         margin-top: calc(var(--indent-default) * 2);
