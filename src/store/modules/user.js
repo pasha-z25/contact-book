@@ -63,6 +63,7 @@ export default {
             ctx.commit('clearContacts');
             ctx.commit('clearUser');
             ctx.commit('setAuthFalse');
+            ctx.commit('setPreloaderFalse');
         },
         async fetchUser(ctx, { email, password }) {
             // console.log(ctx);
