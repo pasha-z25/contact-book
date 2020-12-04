@@ -1,10 +1,8 @@
 import { router } from "@/routes"
 
 export default {
-    namespaced: true,
     state: {
         auth: false,
-        preloader: false,
         cookie: {},
         user: {},
         currentContactId: '',
@@ -13,15 +11,14 @@ export default {
         getUser(state) {
             return state.user;
         },
-        getPreloader(state) {
-            return state.preloader;
-        },
         getAuthStatus(state) {
             return state.auth
         },
+        /*
         getCurrentContactId(state) {
             return state.currentContactId;
         },
+        */
     },
     mutations: {
         setCookie(state, cookie) {
@@ -31,21 +28,9 @@ export default {
         setAuthTrue(state) {
             state.auth = true;
         },
-        setCurrentContactId(state, id) {
-            state.currentContactId = id;
-        },
-        clearCurrentContactId(state) {
-            state.currentContactId = '';
-        },
         setAuthFalse(state) {
             state.auth = false;
             router.push("/")
-        },
-        setPreloaderTrue(state) {
-            state.preloader = true;
-        },
-        setPreloaderFalse(state) {
-            state.preloader = false;
         },
         addUserInfo(state, userObj) {
             for (let key in userObj) {
@@ -57,18 +42,25 @@ export default {
                 delete state.user[key];
             }
         },
+        /*
+        setCurrentContactId(state, id) {
+            state.currentContactId = id;
+        },
+        clearCurrentContactId(state) {
+            state.currentContactId = '';
+        },
+        */
     },
     actions: {
-        initLogOut(ctx) {
-            ctx.commit('clearCategories');
-            ctx.commit('clearContacts');
-            ctx.commit('clearUser');
-            ctx.commit('setAuthFalse');
-            ctx.commit('setPreloaderFalse');
+        initLogOut({ commit }) {
+            commit('clearCategories');
+            commit('clearContacts');
+            commit('clearUser');
+            commit('setAuthFalse');
+            commit('setPreloaderFalse');
         },
-        async fetchUser(ctx, { email, password }) {
-            // console.log(ctx);
-            ctx.commit('setPreloaderTrue');
+        async fetchUser({ commit }, { email, password }) {
+            commit('setPreloaderTrue');
             fetch('/api/users/login', {
                 method: 'POST',
                 headers: {
@@ -81,7 +73,7 @@ export default {
             }).then(response => response.json())
                 .catch(console.log)
                 .then( data => {
-                    ctx.commit('setCookie', data.cookie);
+                    commit('setCookie', data.cookie);
                     console.log('Result:', data.message);
                     fetch('/api/users/profile', {
                         method: 'GET',
@@ -89,13 +81,10 @@ export default {
                             'Content-type': 'application/json',
                         },
                     }).then(response => response.json())
-                        .catch(
-                            console.log,
-                        )
+                        .catch(console.log)
                         .then(data => {
                             console.log('User: ', data);
-                            ctx.commit('addUserInfo', data);
-                            // ctx.commit('setAuthTrue');
+                            commit('addUserInfo', data);
                         });
                     fetch('/api/categories', {
                         method: 'GET',
@@ -103,12 +92,10 @@ export default {
                             'Content-type': 'application/json',
                         },
                     }).then(response => response.json())
-                        .catch(
-                            console.log,
-                        )
+                        .catch(console.log)
                         .then(data => {
                             console.log('Categories: ', data);
-                            ctx.commit('addCategories', data);
+                            commit('addCategories', data);
                         });
                     fetch('/api/phonebook', {
                         method: 'GET',
@@ -119,26 +106,26 @@ export default {
                             'Content-type': 'application/json',
                         },
                     }).then(response => response.json())
-                        .catch(
-                            console.log,
-                        )
+                        .catch(console.log)
                         .then(data => {
                             console.log('Contacts: ', data);
-                            ctx.commit('addContacts', data);
-                            ctx.commit('setAuthTrue');
+                            commit('addContacts', data);
                         });
+                    commit('setAuthTrue');
                     setTimeout(() => {
-                        ctx.commit('setPreloaderFalse');
+                        commit('setPreloaderFalse');
                         router.push("/home")
                     }, 500);
                 })
         },
+        /*
         setContactId(ctx, id) {
             ctx.commit('setCurrentContactId', id);
         },
         clearContactId(ctx) {
             ctx.commit('clearCurrentContactId');
         }
+        */
     },
     strict: process.env.NODE_ENV !== 'production'
 }
