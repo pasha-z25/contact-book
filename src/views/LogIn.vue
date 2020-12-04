@@ -12,7 +12,7 @@
                 <input id="password" type="password" class="input" placeholder="Password" v-model="user.password" />
             </label>
         </div>
-        <v-button type="submit" class="submit" @click.prevent="handleClick(user)">{{ $t('btnLogIn') }}</v-button>
+        <button type="submit" class="btn btn-orange submit" @click.prevent="handleClick(user)">{{ $t('btnLogIn') }}</button>
     </form>
     <p class="text text-center">{{ $t('msgNoAccountNoPanic') }} <router-link to="/register" class="link">{{ $t('msgRegister') }}.</router-link></p>
   </authorization>
@@ -20,13 +20,10 @@
 
 <script>
   import Authorization from "../layouts/Authorization";
-  import VButton from "../components/VButton";
-  import { mapGetters } from "vuex"
 
   export default {
     name: "LogIn",
     components: {
-      VButton,
       Authorization
     },
     data() {
@@ -36,11 +33,6 @@
             password: '6811217'
         }
       }
-    },
-    computed: {
-        ...mapGetters([
-            'getUser'
-        ]),
     },
     methods: {
       handleClick(user) {
