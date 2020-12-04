@@ -7,7 +7,7 @@
       <input type="text" class="input" placeholder="Surname" required v-model="surname">
       <input type="password" class="input" placeholder="Password" required v-model="password">
       <input type="password" class="input" placeholder="Repeat Password" required v-model="repassword">
-      <button type="submit" class="submit" @click="handleClick">Регистрация</button>
+      <v-button type="submit" class="submit" @click="handleClick">{{ $t('btnLogIn') }}</v-button>
     </form>
     <p class="text text-center">Есть аккаунт? <router-link to="/" class="link">Авторизируйтесь.</router-link></p>
   </authorization>
@@ -16,10 +16,12 @@
 <script>
   import Authorization from "../layouts/Authorization";
   import routes from "../routes";
+  import VButton from "../components/VButton";
 
   export default {
     name: "Register",
     components: {
+      VButton,
       Authorization
     },
     data() {
