@@ -4,7 +4,7 @@
             :type="type"
             :class="[vclass, 'btn']"
     >
-        <span class="text">{{ name }}</span>
+        <span class="text"><slot>Send</slot></span>
     </button>
 </template>
 
@@ -18,10 +18,6 @@
             type: {
                 type: String,
                 default: 'submit'
-            },
-            name: {
-                type: String,
-                default: 'Send'
             },
             vclass: {
                 type: String,
