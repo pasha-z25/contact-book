@@ -2,6 +2,7 @@
   "btnLogIn": "Log in",
   "btnRegister": "Register",
   "btnToHome": "To home",
+
   "msgOr": "or",
   "msgLogIn": "Log in",
   "msgToManage": "to manage your contacts",
@@ -11,6 +12,10 @@
   "msgWillComeBack": "(but maybe she will come back ...)",
   "msgYouNotLogged": "You are not logged",
   "msgContactsNotAvailable": "contacts are not yet available to you",
+  "msgFillIn": "Fill in",
+  "msgRegistrationData": "the registration data",
+  "msgHaveAccount": "Have an account",
+
   "metaLoginTitle": "Contact book - login page",
   "metaLoginDescription": "Contact management application"
 }
