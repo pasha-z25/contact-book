@@ -1,6 +1,7 @@
 import { router } from "@/routes"
 
 export default {
+    namespaced: true,
     state: {
         categories: [],
         contacts: [],
