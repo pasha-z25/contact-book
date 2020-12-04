@@ -31,7 +31,7 @@
     },
     data() {
       return {
-        user: {
+        user: { //demo for test user data
             email: 'test@mail.md',
             password: '6811217'
         }
