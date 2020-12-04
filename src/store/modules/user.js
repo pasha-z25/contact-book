@@ -118,6 +118,29 @@ export default {
                     }, 500);
                 })
         },
+        async registerUser ({ commit }, user) {
+            commit('setPreloaderTrue');
+            fetch('/api/users/register', {
+                method: 'POST',
+                headers: {
+                    'Content-type': 'application/json',
+                },
+                body: JSON.stringify({
+                    'email': user.email,
+                    'password': user.password,
+                    'name': user.name,
+                    'surname': user.surname
+                })
+            }).then(response => response.json())
+                .catch(console.log)
+                .then(data => {
+                    console.log(data.message);
+                    setTimeout(() => {
+                        commit('setPreloaderFalse');
+                        router.push("/")
+                    }, 500)
+                })
+        }
         /*
         setContactId(ctx, id) {
             ctx.commit('setCurrentContactId', id);
