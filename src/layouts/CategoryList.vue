@@ -2,15 +2,23 @@
     <div class="category-wrapper">
         <router-link to="/category" class="link"><span class="link-text">Edit</span></router-link>
         <p class="title">Categories</p>
-        <ul class="list">
+        <div v-if="(curentUrl === '/home')">
+          <ul class="list">
+            <li class="list_item">All contacts</li>
             <li v-for="category in categories" :key="category._id" class="list_item">{{ category.name }}</li>
-        </ul>
+          </ul>
+        </div>
+        <div v-else>
+          <h3>нет категорий</h3>
+        </div>
 
+        <h3>{{ curentUrl }}</h3>
     </div>
 </template>
 
 <script>
-    import { mapGetters } from "vuex"
+    import { mapGetters } from "vuex";
+    import {router} from "@/routes";
 
     export default {
         name: "CategoryList",
@@ -21,6 +29,10 @@
             categories() {
                 return this.getCategories
             },
+            curentUrl() {
+                const resolved = router.resolve(location);
+                return resolved.href;
+            }
         },
     }
 </script>
