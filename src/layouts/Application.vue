@@ -32,9 +32,7 @@
             VBurger, VAside, VHeader, NotAuth, Preloader
         },
         data() {
-            return {
-
-            }
+            return {}
         },
         computed: {
             ...mapGetters([
