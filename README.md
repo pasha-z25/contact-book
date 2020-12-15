@@ -9,6 +9,8 @@ npm run serve - for start development server
 ```
 ### Примечание
 
+##### в разработке
+
 приложение создавалось на основе [API](https://phonebook.hillel.it/) от IT школы [Hillel](https://odessa.ithillel.ua/)  
 
 ```base command
