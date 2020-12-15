@@ -49,7 +49,6 @@ export default {
     },
     actions: {
         addNewContact(ctx, contact) {
-            // console.log('POST obj', contact);
             ctx.commit('setPreloaderTrue');
             fetch('/api/phonebook', {
                 method: 'POST',
@@ -74,7 +73,6 @@ export default {
             }).then(response => response.json())
                 .catch(console.log)
                 .then(data => {
-                    // console.log('Contact: ', data);
                     console.log('Result: ', data.message);
                     // ctx.commit('addOneContact', data);
                     setTimeout(() => {
@@ -84,7 +82,6 @@ export default {
                 })
         },
         fullInfoContactView(ctx, id) {
-            // console.log('POST obj', contact);
             ctx.commit('setPreloaderTrue');
             fetch(`/api/phonebook/${id}`, {
                 method: 'GET',
@@ -103,7 +100,6 @@ export default {
                 })
         },
         fullInfoContactEdit(ctx, id) {
-            // console.log('POST obj', contact);
             ctx.commit('setPreloaderTrue');
             fetch(`/api/phonebook/${id}`, {
                 method: 'GET',
@@ -122,9 +118,8 @@ export default {
                 })
         },
         modificationContact(ctx, contact) {
-            // console.log('POST obj', contact);
             ctx.commit('setPreloaderTrue');
-            fetch(`/api/phonebook/${contact.id}`, {
+            fetch(`/api/phonebook/${contact._id}`, {
                 method: 'PUT',
                 mode: 'cors',
                 credentials: 'include',
@@ -133,24 +128,10 @@ export default {
                     'Content-type': 'application/json',
                 },
                 body: JSON.stringify(contact)
-                // body: JSON.stringify({
-                //     'name': contact.name,
-                //     'surname': contact.surname,
-                //     'email': [ contact.email ],
-                //     'phone': [{
-                //         '_id': contact.id,
-                //         'category': contact.category,
-                //         'value': contact.phone,
-                //     }],
-                //     'bornDate': contact.bornDate,
-                //     'category': contact.id,
-                //     'position': contact.position,
-                //     'information': contact.information,
-                // })
+
             }).then(response => response.json())
                 .catch(console.log)
                 .then(data => {
-                    // console.log('Contact: ', data);
                     console.log('Result: ', data.message);
                     // ctx.commit('addOneContact', data);
                     setTimeout(() => {
@@ -160,7 +141,6 @@ export default {
                 })
         },
         addNewCategory(ctx, { name }) {
-            // console.log('CAT obj', category);
             ctx.commit('setPreloaderTrue');
             fetch('/api/categories', {
                 method: 'POST',
@@ -176,7 +156,6 @@ export default {
             }).then(response => response.json())
                 .catch(console.log)
                 .then(data => {
-                    // console.log('Category: ', data);
                     console.log('Result: ', data.message);
                     // ctx.commit('addOneContact', data);
                     setTimeout(() => {
@@ -186,7 +165,6 @@ export default {
                 })
         },
         removeCategory(ctx, { id }) {
-            // console.log('CAT obj', category);
             ctx.commit('setPreloaderTrue');
             fetch(`/api/categories/${id}`, {
                 method: 'DELETE',
@@ -196,7 +174,6 @@ export default {
             }).then(response => response.json())
                 .catch(console.log)
                 .then(data => {
-                    // console.log('Category: ', data);
                     console.log('Result: ', data.message);
                     // ctx.commit('addOneContact', data);
                     setTimeout(() => {
