@@ -1,10 +1,11 @@
 <template>
     <application :title="this.title">
+      <form @submit.prevent="addContact(contact)"> <!-- -->
         <div class="input-block">
             <div class="input-group light">
                 <label class="label">
                     <span class="text">Имя</span>
-                    <input id="first-name" type="text" name="Имя" class="input line" v-model="contact.name" required/>
+                    <input id="name" type="text" name="Имя" class="input line" v-model="contact.name" required/>
                 </label>
             </div>
         </div>
@@ -12,7 +13,7 @@
             <div class="input-group light">
                 <label class="label">
                     <span class="text">Фамилия</span>
-                    <input id="last-name" type="text" name="Фамилия" class="input line" v-model="contact.surname" required/>
+                    <input id="surname" type="text" name="Фамилия" class="input line" v-model="contact.surname" required/>
                 </label>
             </div>
         </div>
@@ -54,7 +55,7 @@
             <div class="input-group light">
                 <label class="label">
                     <span class="text">Должность</span>
-                    <input id="position" type="text" name="Должность" class="input line" v-model="contact.position"/>
+                    <input id="position" type="text" name="Должность" class="input line" v-model="contact.position" />
                 </label>
             </div>
         </div>
@@ -66,11 +67,10 @@
                 </label>
             </div>
         </div>
-
-
         <div class="text-center">
-            <v-button name="Добавить" @click.native="addContact(contact)"/>
+            <v-button name="Добавить" type="submit"/>
         </div>
+      </form>
     </application>
 </template>
 
@@ -82,22 +82,12 @@
     export default {
         name: "EditContact",
         components: { Application, VButton },
-        data(cont, handleChange) {
+        data() {
             return {
                 title: "Edit current contact",
-                contact: {
-                    _id: cont._id,
-                    name: cont.name,
-                    surname: cont.surname,
-                    email: [cont.email[0]],
-                    bornDate: cont.bornDate,
-
-
-                    category: handleChange,
-                    phone: '',
-
-                    position: '',
-                    information: '',
+                extraFields: {
+                  position: '',
+                  information: ''
                 }
             }
         },
@@ -109,13 +99,8 @@
             categories() {
                 return this.getCategories
             },
-            cont() {
-                return this.getCurrentContact
-            },
-        },
-        filters: {
-            cutDate(value) {
-                return value.substring(0, 10)
+            contact() {
+                return {...this.getCurrentContact, ...this.extraFields}
             },
         },
         methods: {
@@ -125,9 +110,20 @@
             handleChange(e) {
                 if(e.target.options.selectedIndex > -1) {
                     // console.log(e.target.options[e.target.options.selectedIndex].innerText);
-                    this.contact.category = e.target.options[e.target.options.selectedIndex].innerText
+                    // console.log(e.target.options[e.target.options.selectedIndex].value);
+                    this.contact.category = e.target.options[e.target.options.selectedIndex].value
                 }
             }
+        },
+        filters: {
+          cutDate(value) {
+            return value.substring(0, 10)
+          },
+          capitalize(value) {
+            if (!value) return '';
+            value = value.toString();
+            return value.charAt(0).toUpperCase() + value.slice(1)
+          }
         }
     }
 </script>
