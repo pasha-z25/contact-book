@@ -13,6 +13,8 @@ npm run serve - for start development server
 
 приложение создавалось на основе [API](https://phonebook.hillel.it/) от IT школы [Hillel](https://odessa.ithillel.ua/)  
 
+визуальная часть основана на макете [ContactBook]([https://phonebook.hillel.it/](https://www.figma.com/file/tNHYKW6DCzjSOj1gNwlzGH/ContactBook-(Copy))) 
+
 ```base command
 ошибки сервера при работе с категориями:
 
